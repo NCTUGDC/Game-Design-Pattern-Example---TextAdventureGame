@@ -71,6 +71,12 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
         private void ViewCommandTask()
         {
             Console.WriteLine("篇章ID: {0} 名稱: {1}, 共有{2}節", editingChapter.ChapterID, editingChapter.ChapterName, editingChapter.SectionCount);
+            Console.WriteLine("觸發條件:");
+            foreach(var condition in editingChapter.TriggerConditions)
+            {
+                Console.WriteLine("\t{0}", condition.ConditionInformation);
+            }
+            Console.WriteLine("目錄:");
             foreach (var section in editingChapter.Sections)
             {
                 Console.WriteLine("\t章節ID: {0} 名稱： {1}, 段落數： {2}", section.SectionID, section.SectionName, section.ParagraphCount);

@@ -8,15 +8,22 @@ namespace TextAdventureGame.Library.General.StoryElements
     {
         [MessagePackMember(id: 0, Name = "ParagraphID")]
         public int ParagraphID { get; private set; }
+
         [MessagePackMember(id: 1, Name = "sentences")]
         private List<Sentence> sentences;
+
         [MessagePackMember(id: 2, Name = "currentSentenceIndex")]
         private int currentSentenceIndex;
+
+        [MessagePackRuntimeCollectionItemType]
+        [MessagePackMember(id: 3, Name = "triggerConditions")]
+        private List<PlotTriggerCondition> triggerConditions;
 
         public bool IsEnd { get { return currentSentenceIndex == sentences.Count - 1; } }
         public Sentence CurrentSentence { get { return (currentSentenceIndex >= 0) ? sentences[currentSentenceIndex] : null; } }
         public int SentenceCount { get { return sentences.Count; } }
         public IEnumerable<Sentence> Sentences { get { return sentences; } }
+        public IEnumerable<PlotTriggerCondition> TriggerConditions { get { return triggerConditions; } }
 
         [MessagePackDeserializationConstructor]
         public Paragraph() { }
@@ -24,6 +31,7 @@ namespace TextAdventureGame.Library.General.StoryElements
         {
             ParagraphID = paragraphID;
             sentences = new List<Sentence>();
+            triggerConditions = new List<PlotTriggerCondition>();
             currentSentenceIndex = -1;
         }
 
@@ -80,6 +88,11 @@ namespace TextAdventureGame.Library.General.StoryElements
         public void JumpToStart()
         {
             currentSentenceIndex = -1;
+        }
+
+        public bool IsSufficientPlotTriggerConditions(List<IPlotTriggerConditionTarget> targets)
+        {
+            return triggerConditions.TrueForAll(x => x.IsEligible(targets));
         }
     }
 }

@@ -45,7 +45,9 @@
     <Compile Include="Game.cs" />
     <Compile Include="Story.cs" />
     <Compile Include="StoryElements\Chapter.cs" />
+    <Compile Include="StoryElements\IPlotTriggerConditionTarget.cs" />
     <Compile Include="StoryElements\Paragraph.cs" />
+    <Compile Include="StoryElements\PlotTriggerCondition.cs" />
     <Compile Include="StoryElements\Section.cs" />
     <Compile Include="StoryElements\Sentence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="StoryElements\PlotTriggerConditions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
