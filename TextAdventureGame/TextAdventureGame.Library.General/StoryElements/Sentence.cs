@@ -1,7 +1,7 @@
 ﻿using MsgPack.Serialization;
 using System.Collections.Generic;
 
-namespace TextAdventureGame.Library.General.PlotElements
+namespace TextAdventureGame.Library.General.StoryElements
 {
     public class Sentence
     {

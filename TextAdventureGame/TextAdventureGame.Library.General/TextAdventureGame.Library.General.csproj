@@ -43,11 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
-    <Compile Include="Plot.cs" />
-    <Compile Include="PlotElements\Chapter.cs" />
-    <Compile Include="PlotElements\Paragraph.cs" />
-    <Compile Include="PlotElements\Section.cs" />
-    <Compile Include="PlotElements\Sentence.cs" />
+    <Compile Include="Story.cs" />
+    <Compile Include="StoryElements\Chapter.cs" />
+    <Compile Include="StoryElements\Paragraph.cs" />
+    <Compile Include="StoryElements\Section.cs" />
+    <Compile Include="StoryElements\Sentence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializationHelper.cs" />
   </ItemGroup>

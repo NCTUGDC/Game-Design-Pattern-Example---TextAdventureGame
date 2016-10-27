@@ -1,7 +1,7 @@
 ﻿using System;
-using TextAdventureGame.Library.General.PlotElements;
+using TextAdventureGame.Library.General.StoryElements;
 
-namespace TextAdventureGame.ConsoleEditor.PlotEditorElements
+namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
 {
     public class SentenceContentControlHandler : EditorControlHandler
     {
@@ -26,8 +26,8 @@ namespace TextAdventureGame.ConsoleEditor.PlotEditorElements
                 bool canHandle = true;
                 switch (command)
                 {
-                    case "back to plot":
-                        BackToPlotCommandTask(out rollbackLayerCount);
+                    case "back to story":
+                        BackToStoryCommandTask(out rollbackLayerCount);
                         break;
                     case "back to chapter":
                         BackToChapterCommandTask(out rollbackLayerCount);
@@ -66,7 +66,7 @@ namespace TextAdventureGame.ConsoleEditor.PlotEditorElements
         protected override void HelpCommandTask()
         {
             base.HelpCommandTask();
-            Console.WriteLine("\t輸入back to plot返回劇本層級");
+            Console.WriteLine("\t輸入back to story返回故事層級");
             Console.WriteLine("\t輸入back to chapter返回篇章層級");
             Console.WriteLine("\t輸入back to section返回章節層級");
             Console.WriteLine("\t輸入back to paragraph返回段落層級");
@@ -75,7 +75,7 @@ namespace TextAdventureGame.ConsoleEditor.PlotEditorElements
             Console.WriteLine("\t輸入remove line移除行");
             Console.WriteLine("\t輸入insert line插入行");
         }
-        private void BackToPlotCommandTask(out int rollbackLayerCount)
+        private void BackToStoryCommandTask(out int rollbackLayerCount)
         {
             rollbackLayerCount = 4;
         }

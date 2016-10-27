@@ -1,28 +1,28 @@
 ﻿using System;
 using System.IO;
-using TextAdventureGame.ConsoleEditor.PlotEditorElements;
+using TextAdventureGame.ConsoleEditor.StoryEditorElements;
 using TextAdventureGame.Library.General;
 
 namespace TextAdventureGame.ConsoleEditor
 {
-    public class PlotEditor : EditorControlHandler
+    public class StoryEditor : EditorControlHandler
     {
-        private Plot editingPlot;
+        private Story editingStory;
 
         public override string ControlInformation
         {
             get
             {
-                return "劇本編輯器： 輸入 help 了解操作方式";
+                return "故事編輯器： 輸入 help 了解操作方式";
             }
         }
 
-        private bool LoadPlot(string filePath)
+        private bool LoadStory(string filePath)
         {
             if(File.Exists(filePath))
             {
-                editingPlot = Plot.LoadPlot(filePath);
-                editorControlHandler = new PlotContentControlHandler(editingPlot);
+                editingStory = Story.LoadStory(filePath);
+                editorControlHandler = new StoryContentControlHandler(editingStory);
                 return true;
             }
             else
@@ -30,10 +30,10 @@ namespace TextAdventureGame.ConsoleEditor
                 return false;
             }
         }
-        private void CreatePlot(int plotID, string plotName)
+        private void CreateStory(int storyID, string storyName)
         {
-            editingPlot = new Plot(plotID, plotName);
-            editorControlHandler = new PlotContentControlHandler(editingPlot);
+            editingStory = new Story(storyID, storyName);
+            editorControlHandler = new StoryContentControlHandler(editingStory);
         }
 
         protected override bool HandleCommand(string command, out int rollbackLayerCount)
@@ -68,8 +68,8 @@ namespace TextAdventureGame.ConsoleEditor
         {
             base.HelpCommandTask();
             Console.WriteLine("\t輸入exit離開編輯器");
-            Console.WriteLine("\t輸入load讀取劇本(名稱先不用輸入)");
-            Console.WriteLine("\t輸入create建立新劇本(名稱先不用輸入)");
+            Console.WriteLine("\t輸入load讀取故事(名稱先不用輸入)");
+            Console.WriteLine("\t輸入create建立新故事(名稱先不用輸入)");
         }
         private void ExitCommandTask(out int rollbackLayerCount)
         {
@@ -79,7 +79,7 @@ namespace TextAdventureGame.ConsoleEditor
         {
             Console.Write("請輸入要讀取的檔案路徑與名稱(輸入cancel取消): ");
             string inputString = Console.ReadLine();
-            while (inputString != "cancel" && !LoadPlot(inputString))
+            while (inputString != "cancel" && !LoadStory(inputString))
             {
                 Console.WriteLine("讀取失敗! 請輸入要讀取的檔案路徑與名稱(輸入cancel取消)");
                 inputString = Console.ReadLine();
@@ -91,21 +91,21 @@ namespace TextAdventureGame.ConsoleEditor
         }
         private void CreateCommandTask()
         {
-            Console.Write("請輸入劇本ID(輸入cancel取消): ");
-            int plotID = 0;
+            Console.Write("請輸入故事ID(輸入cancel取消): ");
+            int storyID = 0;
             string inputString = Console.ReadLine();
             if (inputString != "cancel")
             {
-                while (inputString != "cancel" && !int.TryParse(inputString, out plotID))
+                while (inputString != "cancel" && !int.TryParse(inputString, out storyID))
                 {
-                    Console.Write("不合法的輸入 請輸入劇本ID(整數)(輸入cancel取消): ");
+                    Console.Write("不合法的輸入 請輸入故事ID(整數)(輸入cancel取消): ");
                     inputString = Console.ReadLine();
                 }
                 if (inputString != "cancel")
                 {
-                    Console.Write("請輸入劇本名稱: ");
-                    string plotName = Console.ReadLine();
-                    CreatePlot(plotID, plotName);
+                    Console.Write("請輸入故事名稱: ");
+                    string storyName = Console.ReadLine();
+                    CreateStory(storyID, storyName);
                     Console.WriteLine("建立成功!");
                 }
             }

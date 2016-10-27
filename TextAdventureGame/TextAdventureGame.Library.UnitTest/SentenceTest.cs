@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TextAdventureGame.Library.General.PlotElements;
+using TextAdventureGame.Library.General.StoryElements;
 
 namespace TextAdventureGame.Library.UnitTest
 {

@@ -11,12 +11,12 @@ namespace TextAdventureGame.ConsoleEditor
             {
                 Console.Clear();
                 Console.WriteLine("請輸入要進入的編輯器：");
-                Console.WriteLine("\tplot :劇本編輯器");
+                Console.WriteLine("\tstory :故事編輯器");
                 Console.WriteLine("\texit :關閉編輯器");
                 switch (Console.ReadLine())
                 {
-                    case "plot":
-                        editorControlHandler = new PlotEditor();
+                    case "story":
+                        editorControlHandler = new StoryEditor();
                         break;
                     case "exit":
                         return;

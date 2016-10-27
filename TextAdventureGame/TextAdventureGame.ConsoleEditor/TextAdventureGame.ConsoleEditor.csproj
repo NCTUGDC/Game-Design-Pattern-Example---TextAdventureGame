@@ -40,13 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlotEditor.cs" />
+    <Compile Include="StoryEditor.cs" />
     <Compile Include="EditorControlHandler.cs" />
-    <Compile Include="PlotEditorElements\ChapterContentControlHandler.cs" />
-    <Compile Include="PlotEditorElements\ParagraphContentControlHandler.cs" />
-    <Compile Include="PlotEditorElements\PlotContentControlHandler.cs" />
-    <Compile Include="PlotEditorElements\SectionContentControlHandler.cs" />
-    <Compile Include="PlotEditorElements\SentenceContentControlHandler.cs" />
+    <Compile Include="StoryEditorElements\ChapterContentControlHandler.cs" />
+    <Compile Include="StoryEditorElements\ParagraphContentControlHandler.cs" />
+    <Compile Include="StoryEditorElements\StoryContentControlHandler.cs" />
+    <Compile Include="StoryEditorElements\SectionContentControlHandler.cs" />
+    <Compile Include="StoryEditorElements\SentenceContentControlHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

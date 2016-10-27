@@ -2,32 +2,32 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using TextAdventureGame.Library.General.PlotElements;
+using TextAdventureGame.Library.General.StoryElements;
 
 namespace TextAdventureGame.Library.General
 {
-    public class Plot
+    public class Story
     {
-        public static Plot LoadPlot(string fileName)
+        public static Story LoadStory(string fileName)
         {
             if (File.Exists(fileName))
             {
-                return SerializationHelper.Deserialize<Plot>(File.ReadAllBytes(fileName));
+                return SerializationHelper.Deserialize<Story>(File.ReadAllBytes(fileName));
             }
             else
             {
                 return null;
             }
         }
-        public static void SavePlot(string fileName, Plot plot)
+        public static void SaveStory(string fileName, Story story)
         {
-            File.WriteAllBytes(fileName, SerializationHelper.Serialize(plot));
+            File.WriteAllBytes(fileName, SerializationHelper.Serialize(story));
         }
 
-        [MessagePackMember(id: 0, Name = "PlotID")]
-        public int PlotID { get; set; }
-        [MessagePackMember(id: 1, Name = "PlotName")]
-        public string PlotName { get; set; }
+        [MessagePackMember(id: 0, Name = "StoryID")]
+        public int StoryID { get; set; }
+        [MessagePackMember(id: 1, Name = "StoryName")]
+        public string StoryName { get; set; }
         [MessagePackMember(id: 2, Name = "chapters")]
         private List<Chapter> chapters;
         [MessagePackMember(id: 3, Name = "currentChapterIndex")]
@@ -39,12 +39,12 @@ namespace TextAdventureGame.Library.General
         public IEnumerable<Chapter> Chapters { get { return chapters; } }
 
         [MessagePackDeserializationConstructor]
-        public Plot(){}
+        public Story(){}
 
-        public Plot(int plotID, string plotName)
+        public Story(int storyID, string storyName)
         {
-            PlotID = plotID;
-            PlotName = plotName;
+            StoryID = storyID;
+            StoryName = storyName;
             chapters = new List<Chapter>();
             currentChapterIndex = -1;
         }

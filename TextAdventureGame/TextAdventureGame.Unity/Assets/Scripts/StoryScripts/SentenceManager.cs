@@ -4,7 +4,7 @@ using System;
 using TextAdventureGame.Unity.Library;
 using TextAdventureGame.Library.General;
 
-namespace TextAdventureGame.Unity.Scripts.PlotScripts
+namespace TextAdventureGame.Unity.Scripts.StoryScripts
 {
     public class SentenceManager : MonoBehaviour
     {
@@ -13,28 +13,28 @@ namespace TextAdventureGame.Unity.Scripts.PlotScripts
 
         [SerializeField]
         private SentenceDialog sentenceDialogPrefab;
-        private Plot plot;
+        private Story story;
         private Canvas canvas;
 
         void Awake()
         {
             instance = this;
-            plot = GameManager.Game.MainPlot;
+            story = GameManager.Game.MainStory;
             canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         }
 
         void Start()
         {
-            plot.ToNextChapter();
-            plot.CurrentChapter.ToNextSection();
-            plot.CurrentChapter.CurrentSection.ToNextParagraph();
-            plot.CurrentChapter.CurrentSection.CurrentParagraph.ToNextSentence();
+            story.ToNextChapter();
+            story.CurrentChapter.ToNextSection();
+            story.CurrentChapter.CurrentSection.ToNextParagraph();
+            story.CurrentChapter.CurrentSection.CurrentParagraph.ToNextSentence();
             ShowSentence();
         }
 
         public void ToNextSentence()
         {
-            plot.CurrentChapter.CurrentSection.CurrentParagraph.ToNextSentence();
+            story.CurrentChapter.CurrentSection.CurrentParagraph.ToNextSentence();
             ShowSentence();
         }
         void ShowSentence()
@@ -43,7 +43,7 @@ namespace TextAdventureGame.Unity.Scripts.PlotScripts
             dialog.transform.SetParent(canvas.transform);
             dialog.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -225);
 
-            dialog.Sentence = plot.CurrentChapter.CurrentSection.CurrentParagraph.CurrentSentence;
+            dialog.Sentence = story.CurrentChapter.CurrentSection.CurrentParagraph.CurrentSentence;
         }
     }
 }

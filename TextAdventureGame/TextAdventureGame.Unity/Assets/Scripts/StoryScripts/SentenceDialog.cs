@@ -1,8 +1,8 @@
-﻿using TextAdventureGame.Library.General.PlotElements;
+﻿using TextAdventureGame.Library.General.StoryElements;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TextAdventureGame.Unity.Scripts.PlotScripts
+namespace TextAdventureGame.Unity.Scripts.StoryScripts
 {
     public class SentenceDialog : MonoBehaviour
     {

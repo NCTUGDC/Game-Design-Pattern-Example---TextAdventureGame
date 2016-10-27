@@ -1,14 +1,14 @@
-﻿using TextAdventureGame.Library.General.PlotElements;
+﻿using TextAdventureGame.Library.General.StoryElements;
 
 namespace TextAdventureGame.Library.General
 {
     public class Game
     {
-        public Plot MainPlot { get; private set; }
+        public Story MainStory { get; private set; }
 
         public Game()
         {
-            MainPlot = new Plot(0, "測試劇情");
+            MainStory = new Story(0, "測試故事");
             for (int chapterIndex = 0; chapterIndex < 3; chapterIndex++)
             {
                 Chapter chapter = new Chapter(chapterIndex, string.Format("第{0}章", chapterIndex));
@@ -24,7 +24,7 @@ namespace TextAdventureGame.Library.General
                             for (int lineIndex = 0; lineIndex < 3; lineIndex++)
                             {
                                 sentence.AddLine(string.Format("{0} {1} 第{2}節 第{3}段 第{4}句 第{5}行",
-                                    MainPlot.PlotName,
+                                    MainStory.StoryName,
                                     chapter.ChapterName,
                                     sectionIndex,
                                     paragraphIndex,
@@ -38,7 +38,7 @@ namespace TextAdventureGame.Library.General
                     }
                     chapter.AddSection(section);
                 }
-                MainPlot.AddChapter(chapter);
+                MainStory.AddChapter(chapter);
             }
         }
     }

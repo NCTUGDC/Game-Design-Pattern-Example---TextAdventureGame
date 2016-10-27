@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TextAdventureGame.Library.General.PlotElements
+namespace TextAdventureGame.Library.General.StoryElements
 {
     public class Paragraph
     {
