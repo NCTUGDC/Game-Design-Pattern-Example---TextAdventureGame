@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace TextAdventureGame.Library.General.StoryElements
 {
-    public class Sentence
+    public class Sentence : PlotTriggerElement
     {
-        [MessagePackMember(id: 0, Name = "SentenceID")]
+        [MessagePackMember(id: 2, Name = "SentenceID")]
         public int SentenceID { get; private set; }
-        [MessagePackMember(id: 1, Name = "SpeakerName")]
+        [MessagePackMember(id: 3, Name = "SpeakerName")]
         public string SpeakerName { get; set; }
-        [MessagePackMember(id: 2, Name = "lines")]
+        [MessagePackMember(id: 4, Name = "lines")]
         private List<string> lines;
-        [MessagePackMember(id: 3, Name = "currentLineIndex")]
+        [MessagePackMember(id: 5, Name = "currentLineIndex")]
         private int currentLineIndex;
 
         public bool IsEnd { get { return currentLineIndex == lines.Count - 1; } }

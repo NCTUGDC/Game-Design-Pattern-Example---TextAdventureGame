@@ -3,7 +3,7 @@ using TextAdventureGame.Library.General.StoryElements;
 
 namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
 {
-    public class SentenceContentControlHandler : EditorControlHandler
+    public class SentenceContentControlHandler : PlotTriggerContentControlHandler
     {
         private Sentence editingSentence;
 
@@ -15,7 +15,7 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
             }
         }
 
-        public SentenceContentControlHandler(Sentence sentence)
+        public SentenceContentControlHandler(Sentence sentence) : base(sentence)
         {
             editingSentence = sentence;
         }
@@ -37,9 +37,6 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
                         break;
                     case "back to paragraph":
                         BackToParagraphCommandTask(out rollbackLayerCount);
-                        break;
-                    case "view":
-                        ViewCommandTask();
                         break;
                     case "add line":
                         AddLineCommandTask();
@@ -66,14 +63,13 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
         protected override void HelpCommandTask()
         {
             base.HelpCommandTask();
+            Console.WriteLine("\t輸入add line加入新行");
+            Console.WriteLine("\t輸入remove line移除行");
+            Console.WriteLine("\t輸入insert line插入行");
             Console.WriteLine("\t輸入back to story返回故事層級");
             Console.WriteLine("\t輸入back to chapter返回篇章層級");
             Console.WriteLine("\t輸入back to section返回章節層級");
             Console.WriteLine("\t輸入back to paragraph返回段落層級");
-            Console.WriteLine("\t輸入view檢視文句資訊");
-            Console.WriteLine("\t輸入add line加入新行");
-            Console.WriteLine("\t輸入remove line移除行");
-            Console.WriteLine("\t輸入insert line插入行");
         }
         private void BackToStoryCommandTask(out int rollbackLayerCount)
         {
@@ -91,12 +87,15 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
         {
             rollbackLayerCount = 1;
         }
-        private void ViewCommandTask()
+        protected override void ViewCommandTask()
         {
-            Console.WriteLine("文句ID: {0} 角色：{1} , 共有{1}行", editingSentence.SentenceID, editingSentence.SpeakerName, editingSentence.LineCount);
+            Console.WriteLine("文句ID: {0} 角色：{1} , 共有{2}行", editingSentence.SentenceID, editingSentence.SpeakerName, editingSentence.LineCount);
+            base.ViewCommandTask();
+            int lineNumber = 0;
             foreach (var line in editingSentence.Lines)
             {
-                Console.WriteLine("\t{0}", line);
+                Console.WriteLine("\t{0}: {1}", lineNumber, line);
+                lineNumber++;
             }
         }
         private void AddLineCommandTask()

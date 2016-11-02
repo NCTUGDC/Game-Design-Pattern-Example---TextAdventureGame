@@ -4,23 +4,19 @@ using System.Linq;
 
 namespace TextAdventureGame.Library.General.StoryElements
 {
-    public class Chapter
+    public class Chapter : PlotTriggerElement
     {
-        [MessagePackMember(id: 0, Name = "ChapterID")]
+        [MessagePackMember(id: 2, Name = "ChapterID")]
         public int ChapterID { get; private set; }
 
-        [MessagePackMember(id: 1, Name = "ChapterName")]
+        [MessagePackMember(id: 3, Name = "ChapterName")]
         public string ChapterName { get; private set; }
 
-        [MessagePackMember(id: 2, Name = "sections")]
+        [MessagePackMember(id: 4, Name = "sections")]
         private List<Section> sections;
 
-        [MessagePackMember(id: 3, Name = "currentSectionIndex")]
+        [MessagePackMember(id: 5, Name = "currentSectionIndex")]
         private int currentSectionIndex;
-
-        [MessagePackRuntimeCollectionItemType]
-        [MessagePackMember(id: 4, Name = "triggerConditions")]
-        private List<PlotTriggerCondition> triggerConditions;
 
         public bool IsEnd { get { return currentSectionIndex == sections.Count - 1; } }
         public Section CurrentSection { get { return (currentSectionIndex >= 0) ? sections[currentSectionIndex] : null; } }
@@ -91,11 +87,6 @@ namespace TextAdventureGame.Library.General.StoryElements
         public void JumpToStart()
         {
             currentSectionIndex = -1;
-        }
-
-        public bool IsSufficientPlotTriggerConditions(List<IPlotTriggerConditionTarget> targets)
-        {
-            return triggerConditions.TrueForAll(x => x.IsEligible(targets));
         }
     }
 }

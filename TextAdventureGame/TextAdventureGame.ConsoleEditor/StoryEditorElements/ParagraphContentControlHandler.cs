@@ -3,7 +3,7 @@ using TextAdventureGame.Library.General.StoryElements;
 
 namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
 {
-    public class ParagraphContentControlHandler : EditorControlHandler
+    public class ParagraphContentControlHandler : PlotTriggerContentControlHandler
     {
         private Paragraph editingParagraph;
 
@@ -15,7 +15,7 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
             }
         }
 
-        public ParagraphContentControlHandler(Paragraph paragraph)
+        public ParagraphContentControlHandler(Paragraph paragraph) : base(paragraph)
         {
             editingParagraph = paragraph;
         }
@@ -35,9 +35,6 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
                         break;
                     case "back to section":
                         BackToSectionCommandTask(out rollbackLayerCount);
-                        break;
-                    case "view":
-                        ViewCommandTask();
                         break;
                     case "add sentence":
                         AddSentenceCommandTask();
@@ -64,13 +61,12 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
         protected override void HelpCommandTask()
         {
             base.HelpCommandTask();
-            Console.WriteLine("\t輸入back to story返回故事層級");
-            Console.WriteLine("\t輸入back to chapter返回篇章層級");
-            Console.WriteLine("\t輸入back to section返回章節層級");
-            Console.WriteLine("\t輸入view檢視段落資訊");
             Console.WriteLine("\t輸入add sentence加入新文句");
             Console.WriteLine("\t輸入load sentence載入文句");
             Console.WriteLine("\t輸入remove sentence移除文句");
+            Console.WriteLine("\t輸入back to story返回故事層級");
+            Console.WriteLine("\t輸入back to chapter返回篇章層級");
+            Console.WriteLine("\t輸入back to section返回章節層級");
         }
         private void BackToStoryCommandTask(out int rollbackLayerCount)
         {
@@ -84,14 +80,10 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
         {
             rollbackLayerCount = 1;
         }
-        private void ViewCommandTask()
+        protected override void ViewCommandTask()
         {
             Console.WriteLine("段落ID: {0} , 共有{1}條文句", editingParagraph.ParagraphID, editingParagraph.SentenceCount);
-            Console.WriteLine("觸發條件:");
-            foreach (var condition in editingParagraph.TriggerConditions)
-            {
-                Console.WriteLine("\t{0}", condition.ConditionInformation);
-            }
+            base.ViewCommandTask();
             Console.WriteLine("目錄:");
             foreach (var sentence in editingParagraph.Sentences)
             {

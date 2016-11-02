@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using MsgPack.Serialization;
+using System.Collections.Generic;
 
 namespace TextAdventureGame.Library.General.StoryElements
 {
     public abstract class PlotTriggerCondition
     {
+        [MessagePackMember(id: 0, Name = "ConditionID")]
         public int ConditionID { get; private set; }
         public abstract string ConditionInformation { get; }
 
@@ -11,6 +13,9 @@ namespace TextAdventureGame.Library.General.StoryElements
         {
             ConditionID = conditionID;
         }
-        public abstract bool IsEligible(List<IPlotTriggerConditionTarget> targets);
+        public virtual bool IsEligible(List<object> informationProviders)
+        {
+            return informationProviders != null;
+        }
     }
 }

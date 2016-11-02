@@ -3,7 +3,7 @@ using TextAdventureGame.Library.General.StoryElements;
 
 namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
 {
-    public class SectionContentControlHandler : EditorControlHandler
+    public class SectionContentControlHandler : PlotTriggerContentControlHandler
     {
         private Section editingSection;
 
@@ -15,7 +15,7 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
             }
         }
 
-        public SectionContentControlHandler(Section section)
+        public SectionContentControlHandler(Section section) : base(section)
         {
             editingSection = section;
         }
@@ -32,9 +32,6 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
                         break;
                     case "back to chapter":
                         BackToChapterCommandTask(out rollbackLayerCount);
-                        break;
-                    case "view":
-                        ViewCommandTask();
                         break;
                     case "add paragraph":
                         AddParagraphCommandTask();
@@ -61,12 +58,11 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
         protected override void HelpCommandTask()
         {
             base.HelpCommandTask();
-            Console.WriteLine("\t輸入back to story返回故事層級");
-            Console.WriteLine("\t輸入back to chapter返回篇章層級");
-            Console.WriteLine("\t輸入view檢視章節資訊");
             Console.WriteLine("\t輸入add paragraph加入新段落");
             Console.WriteLine("\t輸入load paragraph載入段落");
             Console.WriteLine("\t輸入remove paragraph移除段落");
+            Console.WriteLine("\t輸入back to story返回故事層級");
+            Console.WriteLine("\t輸入back to chapter返回篇章層級");
         }
         private void BackToStoryCommandTask(out int rollbackLayerCount)
         {
@@ -76,14 +72,10 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
         {
             rollbackLayerCount = 1;
         }
-        private void ViewCommandTask()
+        protected override void ViewCommandTask()
         {
             Console.WriteLine("章節ID: {0} 名稱: {1}, 共有{2}段落", editingSection.SectionID, editingSection.SectionName, editingSection.ParagraphCount);
-            Console.WriteLine("觸發條件:");
-            foreach (var condition in editingSection.TriggerConditions)
-            {
-                Console.WriteLine("\t{0}", condition.ConditionInformation);
-            }
+            base.ViewCommandTask();
             Console.WriteLine("目錄:");
             foreach (var paragraph in editingSection.Paragraphs)
             {

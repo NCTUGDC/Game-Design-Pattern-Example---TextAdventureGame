@@ -71,6 +71,10 @@ namespace TextAdventureGame.ConsoleEditor
             Console.WriteLine("\t輸入load讀取故事(名稱先不用輸入)");
             Console.WriteLine("\t輸入create建立新故事(名稱先不用輸入)");
         }
+        protected override void ViewCommandTask()
+        {
+            HelpCommandTask();
+        }
         private void ExitCommandTask(out int rollbackLayerCount)
         {
             rollbackLayerCount = 1;

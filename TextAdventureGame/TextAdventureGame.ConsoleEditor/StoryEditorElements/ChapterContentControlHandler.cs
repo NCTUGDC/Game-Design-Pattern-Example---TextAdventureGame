@@ -3,7 +3,7 @@ using TextAdventureGame.Library.General.StoryElements;
 
 namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
 {
-    public class ChapterContentControlHandler : EditorControlHandler
+    public class ChapterContentControlHandler : PlotTriggerContentControlHandler
     {
         private Chapter editingChapter;
 
@@ -15,7 +15,7 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
             }
         }
 
-        public ChapterContentControlHandler(Chapter chapter)
+        public ChapterContentControlHandler(Chapter chapter) : base(chapter)
         {
             editingChapter = chapter;
         }
@@ -29,9 +29,6 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
                 {
                     case "back to story":
                         BackToStoryCommandTask(out rollbackLayerCount);
-                        break;
-                    case "view":
-                        ViewCommandTask();
                         break;
                     case "add section":
                         AddSectionCommandTask();
@@ -58,24 +55,19 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
         protected override void HelpCommandTask()
         {
             base.HelpCommandTask();
-            Console.WriteLine("\t輸入back to story返回故事層級");
-            Console.WriteLine("\t輸入view檢視篇章資訊");
             Console.WriteLine("\t輸入add section加入新章節");
             Console.WriteLine("\t輸入load section載入章節");
             Console.WriteLine("\t輸入remove section移除章節");
+            Console.WriteLine("\t輸入back to story返回故事層級");
         }
         private void BackToStoryCommandTask(out int rollbackLayerCount)
         {
             rollbackLayerCount = 1;
         }
-        private void ViewCommandTask()
+        protected override void ViewCommandTask()
         {
             Console.WriteLine("篇章ID: {0} 名稱: {1}, 共有{2}節", editingChapter.ChapterID, editingChapter.ChapterName, editingChapter.SectionCount);
-            Console.WriteLine("觸發條件:");
-            foreach(var condition in editingChapter.TriggerConditions)
-            {
-                Console.WriteLine("\t{0}", condition.ConditionInformation);
-            }
+            base.ViewCommandTask();
             Console.WriteLine("目錄:");
             foreach (var section in editingChapter.Sections)
             {

@@ -43,11 +43,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="IInputActionCallbackTarget.cs" />
+    <Compile Include="InputActionProvider.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Scene.cs" />
+    <Compile Include="StoryElements\PlotTriggerEndEvents\InputStringEvents\InputPlayerNameEvent.cs" />
+    <Compile Include="StoryElements\PlotTriggerEvent.cs" />
     <Compile Include="Story.cs" />
     <Compile Include="StoryElements\Chapter.cs" />
-    <Compile Include="StoryElements\IPlotTriggerConditionTarget.cs" />
+    <Compile Include="StoryElements\PlotTriggerElement.cs" />
     <Compile Include="StoryElements\Paragraph.cs" />
     <Compile Include="StoryElements\PlotTriggerCondition.cs" />
+    <Compile Include="StoryElements\PlotTriggerConditions\EnterSceneCondition.cs" />
+    <Compile Include="StoryElements\PlotTriggerEndEvents\InputStringEvent.cs" />
     <Compile Include="StoryElements\Section.cs" />
     <Compile Include="StoryElements\Sentence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,9 +64,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="StoryElements\PlotTriggerConditions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

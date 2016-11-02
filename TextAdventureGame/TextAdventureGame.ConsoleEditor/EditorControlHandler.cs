@@ -19,6 +19,9 @@ namespace TextAdventureGame.ConsoleEditor
                 case "clear":
                     ClearCommandTask();
                     break;
+                case "view":
+                    ViewCommandTask();
+                    break;
                 default:
                     canHandle = false;
                     break;
@@ -60,5 +63,6 @@ namespace TextAdventureGame.ConsoleEditor
             Console.Clear();
             Console.WriteLine(ControlInformation);
         }
+        protected abstract void ViewCommandTask();
     }
 }

@@ -38,9 +38,6 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
                     case "save":
                         SaveCommandTask();
                         break;
-                    case "view":
-                        ViewCommandTask();
-                        break;
                     case "add chapter":
                         AddChapterCommandTask();
                         break;
@@ -85,7 +82,7 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
             SaveStory(Console.ReadLine());
             Console.WriteLine("儲存成功!");
         }
-        private void ViewCommandTask()
+        protected override void ViewCommandTask()
         {
             Console.WriteLine("故事ID: {0} 名稱: {1}, 共有{2}章", editingStory.StoryID, editingStory.StoryName, editingStory.ChapterCount);
             foreach (var chapter in editingStory.Chapters)

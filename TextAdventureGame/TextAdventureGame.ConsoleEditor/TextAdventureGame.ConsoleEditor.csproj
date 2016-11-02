@@ -43,6 +43,7 @@
     <Compile Include="StoryEditor.cs" />
     <Compile Include="EditorControlHandler.cs" />
     <Compile Include="StoryEditorElements\ChapterContentControlHandler.cs" />
+    <Compile Include="StoryEditorElements\PlotTriggerContentControlHandler.cs" />
     <Compile Include="StoryEditorElements\ParagraphContentControlHandler.cs" />
     <Compile Include="StoryEditorElements\StoryContentControlHandler.cs" />
     <Compile Include="StoryEditorElements\SectionContentControlHandler.cs" />
