@@ -9,7 +9,7 @@ namespace TextAdventureGame.Library.General.WorldElements
         [MessagePackMember(id: 1, Name = "Name")]
         public string Name { get; private set; }
         [MessagePackMember(id: 2, Name = "ConversationContent")]
-        public string ConversationContent { get; private set; }
+        public string ConversationContent { get; set; }
 
         [MessagePackDeserializationConstructor]
         public NPC() { }

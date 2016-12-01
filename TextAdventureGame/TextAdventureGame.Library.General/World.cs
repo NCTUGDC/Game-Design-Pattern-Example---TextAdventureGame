@@ -7,6 +7,14 @@ namespace TextAdventureGame.Library.General
 {
     public class World
     {
+        private static World instance;
+        public static World Instance { get { return instance; } }
+
+        public static void Initial(World world)
+        {
+            instance = world;
+        }
+
         public static World LoadWorld(string fileName)
         {
             if (File.Exists(fileName))

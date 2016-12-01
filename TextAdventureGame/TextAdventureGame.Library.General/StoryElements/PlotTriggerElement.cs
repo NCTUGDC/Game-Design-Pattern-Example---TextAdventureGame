@@ -38,7 +38,7 @@ namespace TextAdventureGame.Library.General.StoryElements
         }
         public bool IsSufficientPlotTriggerConditions(List<object> informationProviders)
         {
-            return informationProviders != null && (informationProviders.Count == 0 || triggerConditions.TrueForAll(x => x.IsEligible(informationProviders)));
+            return informationProviders != null && (informationProviders.Count == 0 || triggerConditions.TrueForAll(x => x.IsEligible()));
         }
 
         public void AddEndEvent(PlotTriggerEvent endEvent)
@@ -49,9 +49,9 @@ namespace TextAdventureGame.Library.General.StoryElements
         {
             return triggerEndEvents.RemoveAll(x => x.EventID == endEventID);
         }
-        public bool ExecuteEvents(List<object> providers)
+        public void ExecuteEvents()
         {
-            return providers != null && (providers.Count == 0 || triggerEndEvents.TrueForAll(x => x.Execute(providers)));
+            triggerEndEvents.ForEach(x => x.Execute());
         }
     }
 }

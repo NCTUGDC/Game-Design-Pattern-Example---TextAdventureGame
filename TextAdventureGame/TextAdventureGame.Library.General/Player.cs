@@ -25,11 +25,17 @@ namespace TextAdventureGame.Library.General
                 onLocatedSceneIDChange?.Invoke(locatedSceneID);
             }
         }
+        public Inventory Inventory { get; private set; }
 
         private event Action<string> onNameChange;
         public event Action<string> OnNameChange { add { onNameChange += value; } remove { onNameChange -= value; } }
 
         private event Action<int> onLocatedSceneIDChange;
         public event Action<int> OnLocatedSceneIDChange { add { onLocatedSceneIDChange += value; } remove { onLocatedSceneIDChange -= value; } }
+
+        public Player()
+        {
+            Inventory = new Inventory();
+        }
     }
 }

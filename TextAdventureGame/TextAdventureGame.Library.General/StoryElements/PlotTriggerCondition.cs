@@ -13,9 +13,6 @@ namespace TextAdventureGame.Library.General.StoryElements
         {
             ConditionID = conditionID;
         }
-        public virtual bool IsEligible(List<object> informationProviders)
-        {
-            return informationProviders != null;
-        }
+        public abstract bool IsEligible();
     }
 }

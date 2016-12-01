@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using TextAdventureGame.Library.General.Protocols;
 
 namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents.InputStringEvents
 {
@@ -17,29 +17,10 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents.I
         {
         }
 
-        public override bool Response(List<object> informationProviders)
+        public override void Response(Dictionary<byte, object> parameters)
         {
-            if(base.Response(informationProviders))
-            {
-                if(informationProviders.Any(x => x is Player))
-                {
-                    Player player = informationProviders.First(x => x is Player) as Player;
-                    string name = informationProviders.First(x => x is string) as string;
-
-                    player.Name = name;
-                    IsCompleted = true;
-
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
+            string name = (string)parameters[(byte)InputStringResponseParameterCode.String];
+            PlayerManager.Instance.Player.Name = name;
         }
     }
 }

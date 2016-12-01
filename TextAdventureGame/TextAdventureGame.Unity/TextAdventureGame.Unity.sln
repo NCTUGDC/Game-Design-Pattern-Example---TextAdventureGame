@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAdventureGame.Unity.Plugins", "TextAdventureGame.Unity.Plugins.csproj", "{24FAA075-67D2-F68B-677B-368D2300F18E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAdventureGame.Unity", "TextAdventureGame.Unity.csproj", "{4BA95D36-423C-626C-D61A-1DA73D2E0539}"
 EndProject
 Global
@@ -11,10 +9,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{24FAA075-67D2-F68B-677B-368D2300F18E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24FAA075-67D2-F68B-677B-368D2300F18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24FAA075-67D2-F68B-677B-368D2300F18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24FAA075-67D2-F68B-677B-368D2300F18E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4BA95D36-423C-626C-D61A-1DA73D2E0539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4BA95D36-423C-626C-D61A-1DA73D2E0539}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BA95D36-423C-626C-D61A-1DA73D2E0539}.Release|Any CPU.ActiveCfg = Release|Any CPU

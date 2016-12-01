@@ -1,7 +1,4 @@
 ﻿using MsgPack.Serialization;
-using System.Collections.Generic;
-using System.Linq;
-using TextAdventureGame.Library.General.WorldElements;
 
 namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerConditions
 {
@@ -23,16 +20,9 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerConditions
             SceneID = sceneID;
         }
 
-        public override bool IsEligible(List<object> informationProviders)
+        public override bool IsEligible()
         {
-            if(base.IsEligible(informationProviders))
-            {
-                return informationProviders.OfType<Scene>().All(x => x.SceneID == SceneID);
-            }
-            else
-            {
-                return false;
-            }
+            return PlayerManager.Instance.Player.LocatedSceneID == SceneID;
         }
     }
 }

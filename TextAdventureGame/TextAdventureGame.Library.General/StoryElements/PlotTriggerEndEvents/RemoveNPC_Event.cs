@@ -2,26 +2,29 @@
 
 namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents
 {
-    public class ChangeSceneEvent : PlotTriggerEvent
+    public class RemoveNPC_Event : PlotTriggerEvent
     {
         [MessagePackMember(id: 1, Name = "SceneID")]
         public int SceneID { get; private set; }
+        [MessagePackMember(id: 2, Name = "NPC_ID")]
+        public int NPC_ID { get; private set; }
         public override string EventInformation
         {
             get
             {
-                return string.Format("更改場景 場景ID： {0}", SceneID);
+                return string.Format("移除NPC SceneID： {0}, NPC ID: {1}", SceneID, NPC_ID);
             }
         }
 
-        public ChangeSceneEvent(int endEventID, int sceneID) : base(endEventID)
+        public RemoveNPC_Event(int endEventID, int sceneID, int npcID) : base(endEventID)
         {
             SceneID = sceneID;
+            NPC_ID = npcID;
         }
 
         public override void Execute()
         {
-            PlayerManager.Instance.Player.LocatedSceneID = SceneID;
+            World.Instance.FindScene(SceneID).RemoveNPC(NPC_ID);
         }
     }
 }

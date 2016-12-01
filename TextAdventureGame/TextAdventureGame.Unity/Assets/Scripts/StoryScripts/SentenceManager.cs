@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System;
-using TextAdventureGame.Unity.Library;
 using TextAdventureGame.Library.General;
 
 namespace TextAdventureGame.Unity.Scripts.StoryScripts
@@ -19,7 +18,8 @@ namespace TextAdventureGame.Unity.Scripts.StoryScripts
         void Awake()
         {
             instance = this;
-            story = GameManager.Game.MainStory;
+            StoryManager.InitialManager(Story.LoadStory("MainStory"));
+            story = StoryManager.Instance.Story;
             canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         }
 

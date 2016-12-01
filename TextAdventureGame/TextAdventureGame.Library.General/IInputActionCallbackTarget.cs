@@ -4,6 +4,6 @@ namespace TextAdventureGame.Library.General
 {
     public interface IInputActionCallbackTarget
     {
-        bool Response(List<object> informationProviders);
+        void Response(Dictionary<byte, object> parameters);
     }
 }
