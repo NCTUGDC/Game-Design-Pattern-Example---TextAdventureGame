@@ -12,11 +12,19 @@ namespace TextAdventureGame.ConsoleEditor
                 Console.Clear();
                 Console.WriteLine("請輸入要進入的編輯器：");
                 Console.WriteLine("\tstory :故事編輯器");
+                Console.WriteLine("\tworld :世界編輯器");
+                Console.WriteLine("\titem :物品編輯器");
                 Console.WriteLine("\texit :關閉編輯器");
                 switch (Console.ReadLine())
                 {
                     case "story":
                         editorControlHandler = new StoryEditor();
+                        break;
+                    case "world":
+                        editorControlHandler = new WorldEditor();
+                        break;
+                    case "item":
+                        editorControlHandler = new ItemEditor();
                         break;
                     case "exit":
                         return;

@@ -22,7 +22,6 @@ namespace TextAdventureGame.Library.General.StoryElements
         public Section CurrentSection { get { return (currentSectionIndex >= 0) ? sections[currentSectionIndex] : null; } }
         public int SectionCount { get { return sections.Count; } }
         public IEnumerable<Section> Sections { get { return sections; } }
-        public IEnumerable<PlotTriggerCondition> TriggerConditions { get { return triggerConditions; } }
 
         [MessagePackDeserializationConstructor]
         public Chapter() { }

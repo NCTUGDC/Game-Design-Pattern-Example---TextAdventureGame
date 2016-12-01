@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ItemEditor.cs" />
+    <Compile Include="ItemFactoryEditorElements\ItemFactoryControlHandler.cs" />
+    <Compile Include="WorldEditor.cs" />
     <Compile Include="StoryEditor.cs" />
     <Compile Include="EditorControlHandler.cs" />
     <Compile Include="StoryEditorElements\ChapterContentControlHandler.cs" />
@@ -50,6 +53,8 @@
     <Compile Include="StoryEditorElements\SentenceContentControlHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorldEditorElements\SceneControlHandler.cs" />
+    <Compile Include="WorldEditorElements\WorldControlHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TextAdventureGame.Library.General\TextAdventureGame.Library.General.csproj">

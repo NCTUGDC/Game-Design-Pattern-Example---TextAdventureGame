@@ -34,8 +34,10 @@ namespace TextAdventureGame.Unity.Scripts.StoryScripts
 
         public void ToNextSentence()
         {
-            story.CurrentChapter.CurrentSection.CurrentParagraph.ToNextSentence();
-            ShowSentence();
+            if(story.CurrentChapter.CurrentSection.CurrentParagraph.ToNextSentence())
+            {
+                ShowSentence();
+            }
         }
         void ShowSentence()
         {

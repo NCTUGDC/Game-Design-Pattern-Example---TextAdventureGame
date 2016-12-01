@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using MsgPack.Serialization;
+﻿using MsgPack.Serialization;
+using System.Collections.Generic;
 using System.Linq;
+using TextAdventureGame.Library.General.WorldElements;
 
 namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerConditions
 {

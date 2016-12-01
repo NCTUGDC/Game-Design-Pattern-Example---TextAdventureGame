@@ -3,6 +3,7 @@ using System.Linq;
 using TextAdventureGame.Library.General.StoryElements;
 using TextAdventureGame.Library.General.StoryElements.PlotTriggerConditions;
 using TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents.InputStringEvents;
+using TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents;
 
 namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
 {
@@ -136,11 +137,15 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
                 {
                     Console.WriteLine("請輸入要加入的結束事件種類：");
                     Console.WriteLine("\tinput string 輸入字串");
+                    Console.WriteLine("\tchange scene 變更場景");
                     inputString = Console.ReadLine();
                     switch (inputString)
                     {
                         case "input string":
                             AddInputStringEndEventTask(endEventID);
+                            break;
+                        case "change scene":
+                            AddChangeSceneEndEventTask(endEventID);
                             break;
                         default:
                             Console.WriteLine("加入失敗，事件種類不存在");
@@ -202,6 +207,24 @@ namespace TextAdventureGame.ConsoleEditor.StoryEditorElements
                 default:
                     Console.WriteLine("加入失敗，事件種類不存在");
                     break;
+            }
+        }
+        private void AddChangeSceneEndEventTask(int endEventID)
+        {
+            Console.Write("請輸入要更改至的場景ID(輸入cancel取消): ");
+            int sceneID = 0;
+            string inputString = Console.ReadLine();
+            if (inputString != "cancel")
+            {
+                while (inputString != "cancel" && !int.TryParse(inputString, out sceneID))
+                {
+                    Console.Write("不合法的輸入 請輸入要更改至的場景ID(整數)(輸入cancel取消): ");
+                    inputString = Console.ReadLine();
+                }
+                if (inputString != "cancel")
+                {
+                    triggerElement.AddEndEvent(new ChangeSceneEvent(endEventID, sceneID));
+                }
             }
         }
         #endregion
