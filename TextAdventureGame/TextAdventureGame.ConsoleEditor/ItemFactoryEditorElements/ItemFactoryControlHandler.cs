@@ -5,7 +5,7 @@ namespace TextAdventureGame.ConsoleEditor.ItemFactoryEditorElements
 {
     public class ItemFactoryControlHandler : EditorControlHandler
     {
-        private ItemFactory editingItemFactory;
+        private ItemFactory editingFactory;
 
         public override string ControlInformation
         {
@@ -15,13 +15,13 @@ namespace TextAdventureGame.ConsoleEditor.ItemFactoryEditorElements
             }
         }
 
-        public ItemFactoryControlHandler(ItemFactory itemFactory)
+        public ItemFactoryControlHandler(ItemFactory factory)
         {
-            editingItemFactory = itemFactory;
+            editingFactory = factory;
         }
-        private void SaveItemFactory(string filePath)
+        private void SaveFactory(string filePath)
         {
-            ItemFactory.SaveItemFactory(filePath, editingItemFactory);
+            ItemFactory.SaveFactory(filePath, editingFactory);
         }
 
         protected override bool HandleCommand(string command, out int rollbackLayerCount)
@@ -74,13 +74,13 @@ namespace TextAdventureGame.ConsoleEditor.ItemFactoryEditorElements
         private void SaveCommandTask()
         {
             Console.Write("請輸入要儲存的檔案路徑與名稱: ");
-            SaveItemFactory(Console.ReadLine());
+            SaveFactory(Console.ReadLine());
             Console.WriteLine("儲存成功!");
         }
         protected override void ViewCommandTask()
         {
-            Console.WriteLine("共有{0}個物品", editingItemFactory.ItemCount);
-            foreach (var item in editingItemFactory.Items)
+            Console.WriteLine("共有{0}個物品", editingFactory.ItemCount);
+            foreach (var item in editingFactory.Items)
             {
                 Console.WriteLine("\t物品ID: {0} 名稱： {1}", item.ItemID, item.ItemName);
             }
@@ -92,9 +92,9 @@ namespace TextAdventureGame.ConsoleEditor.ItemFactoryEditorElements
             string inputString = Console.ReadLine();
             if (inputString != "cancel")
             {
-                while (inputString != "cancel" && (!int.TryParse(inputString, out itemID) || editingItemFactory.ContainsItem(itemID)))
+                while (inputString != "cancel" && (!int.TryParse(inputString, out itemID) || editingFactory.ContainsItem(itemID)))
                 {
-                    if (editingItemFactory.ContainsItem(itemID))
+                    if (editingFactory.ContainsItem(itemID))
                     {
                         Console.Write("ID已存在 請輸入新物品ID(整數)(輸入cancel取消): ");
                     }
@@ -108,7 +108,7 @@ namespace TextAdventureGame.ConsoleEditor.ItemFactoryEditorElements
                 {
                     Console.Write("請輸入物品名稱: ");
                     string itemName = Console.ReadLine();
-                    editingItemFactory.AddItem(new Item(itemID, itemName));
+                    editingFactory.AddItem(new Item(itemID, itemName));
                     ViewCommandTask();
                 }
             }
@@ -125,7 +125,7 @@ namespace TextAdventureGame.ConsoleEditor.ItemFactoryEditorElements
             }
             if (inputString != "cancel")
             {
-                if (editingItemFactory.RemoveItem(itemID))
+                if (editingFactory.RemoveItem(itemID))
                 {
                     Console.WriteLine("已刪除物品");
                 }

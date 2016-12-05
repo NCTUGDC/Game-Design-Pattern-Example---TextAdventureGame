@@ -14,6 +14,8 @@ namespace TextAdventureGame.ConsoleEditor
                 Console.WriteLine("\tstory :故事編輯器");
                 Console.WriteLine("\tworld :世界編輯器");
                 Console.WriteLine("\titem :物品編輯器");
+                Console.WriteLine("\tnpc :NPC編輯器");
+                Console.WriteLine("\tstore :商店編輯器");
                 Console.WriteLine("\texit :關閉編輯器");
                 switch (Console.ReadLine())
                 {
@@ -25,6 +27,12 @@ namespace TextAdventureGame.ConsoleEditor
                         break;
                     case "item":
                         editorControlHandler = new ItemEditor();
+                        break;
+                    case "npc":
+                        editorControlHandler = new NPC_Editor();
+                        break;
+                    case "store":
+                        editorControlHandler = new StoreEditor();
                         break;
                     case "exit":
                         return;

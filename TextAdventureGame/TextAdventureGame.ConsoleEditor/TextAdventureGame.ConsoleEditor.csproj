@@ -40,8 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbilityType.cs" />
     <Compile Include="ItemEditor.cs" />
     <Compile Include="ItemFactoryEditorElements\ItemFactoryControlHandler.cs" />
+    <Compile Include="NPC_Editor.cs" />
+    <Compile Include="NPC_FactoryEditorElements\NPC_FactoryControlHandler.cs" />
+    <Compile Include="StoreEditor.cs" />
+    <Compile Include="StoreFactoryEditorElements\StoreControlHandler.cs" />
+    <Compile Include="StoreFactoryEditorElements\StoreFactoryControlHandler.cs" />
     <Compile Include="WorldEditor.cs" />
     <Compile Include="StoryEditor.cs" />
     <Compile Include="EditorControlHandler.cs" />

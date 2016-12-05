@@ -64,9 +64,9 @@ namespace TextAdventureGame.ConsoleEditor.WorldEditorElements
         {
             Console.WriteLine("場景ID: {0} 名稱: {1}, 共有{2}個NPC", editingScene.SceneID, editingScene.SceneName, editingScene.NPC_Count);
             Console.WriteLine("NPC:");
-            foreach (var npc in editingScene.NPCs)
+            foreach (var npcID in editingScene.NPC_IDs)
             {
-                Console.WriteLine("\tNPCID: {0} 名稱： {1}, 對話內容： {2}", npc.NPC_ID, npc.Name, npc.ConversationContent);
+                Console.WriteLine("\tNPCID: {0}", npcID);
             }
         }
         private void AddNPC_CommandTask()
@@ -88,15 +88,11 @@ namespace TextAdventureGame.ConsoleEditor.WorldEditorElements
                     }
                     inputString = Console.ReadLine();
                 }
-                if (inputString != "cancel")
+                if(inputString != "cancel")
                 {
-                    Console.Write("請輸入NPC名稱: ");
-                    string name = Console.ReadLine();
-                    Console.Write("請輸入NPC對話內容: ");
-                    string conversationContent = Console.ReadLine();
-                    editingScene.AddNPC(new NPC(npcID, name, conversationContent));
-                    ViewCommandTask();
+                    editingScene.AddNPC_ID(npcID);
                 }
+                ViewCommandTask();
             }
         }
         private void RemoveNPC_CommandTask()

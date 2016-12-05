@@ -1,19 +1,19 @@
 ﻿using System;
 using System.IO;
-using TextAdventureGame.ConsoleEditor.ItemFactoryEditorElements;
+using TextAdventureGame.ConsoleEditor.StoreFactoryEditorElements;
 using TextAdventureGame.Library.General;
 
 namespace TextAdventureGame.ConsoleEditor
 {
-    public class ItemEditor : EditorControlHandler
+    public class StoreEditor :  EditorControlHandler
     {
-        private ItemFactory editingFactory;
+        private StoreFactory editingFactory;
 
         public override string ControlInformation
         {
             get
             {
-                return "物品編輯器： 輸入 help 了解操作方式";
+                return "商店編輯器： 輸入 help 了解操作方式";
             }
         }
 
@@ -21,8 +21,8 @@ namespace TextAdventureGame.ConsoleEditor
         {
             if (File.Exists(filePath))
             {
-                editingFactory = ItemFactory.LoadFactory(filePath);
-                editorControlHandler = new ItemFactoryControlHandler(editingFactory);
+                editingFactory = StoreFactory.LoadFactory(filePath);
+                editorControlHandler = new StoreFactoryControlHandler(editingFactory);
                 return true;
             }
             else
@@ -32,8 +32,8 @@ namespace TextAdventureGame.ConsoleEditor
         }
         private void CreateFactory()
         {
-            editingFactory = new ItemFactory();
-            editorControlHandler = new ItemFactoryControlHandler(editingFactory);
+            editingFactory = new StoreFactory();
+            editorControlHandler = new StoreFactoryControlHandler(editingFactory);
         }
 
         protected override bool HandleCommand(string command, out int rollbackLayerCount)
@@ -68,8 +68,8 @@ namespace TextAdventureGame.ConsoleEditor
         {
             base.HelpCommandTask();
             Console.WriteLine("\t輸入exit離開編輯器");
-            Console.WriteLine("\t輸入load讀取物品工廠(名稱先不用輸入)");
-            Console.WriteLine("\t輸入create建立新物品工廠(名稱先不用輸入)");
+            Console.WriteLine("\t輸入load讀取商店工廠(名稱先不用輸入)");
+            Console.WriteLine("\t輸入create建立新商店工廠(名稱先不用輸入)");
         }
         protected override void ViewCommandTask()
         {

@@ -8,11 +8,11 @@ namespace TextAdventureGame.Library.General
     {
         private static ItemFactory instance;
         public static ItemFactory Instance { get { return instance; } }
-        public static void InitialFactory(ItemFactory itemFactory)
+        public static void InitialFactory(ItemFactory factory)
         {
-            instance = itemFactory;
+            instance = factory;
         }
-        public static ItemFactory LoadItemFactory(string fileName)
+        public static ItemFactory LoadFactory(string fileName)
         {
             if (File.Exists(fileName))
             {
@@ -23,9 +23,9 @@ namespace TextAdventureGame.Library.General
                 return null;
             }
         }
-        public static void SaveItemFactory(string fileName, ItemFactory itemFactory)
+        public static void SaveFactory(string fileName, ItemFactory factory)
         {
-            File.WriteAllBytes(fileName, SerializationHelper.Serialize(itemFactory));
+            File.WriteAllBytes(fileName, SerializationHelper.Serialize(factory));
         }
 
         [MessagePackMember(id: 0, Name = "itemDictionary")]

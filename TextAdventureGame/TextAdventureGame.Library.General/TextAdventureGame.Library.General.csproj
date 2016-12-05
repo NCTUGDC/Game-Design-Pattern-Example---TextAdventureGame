@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbilityFactors.cs" />
     <Compile Include="Effector.cs" />
     <Compile Include="IInputActionCallbackTarget.cs" />
     <Compile Include="InputManager.cs" />
@@ -52,15 +53,22 @@
     <Compile Include="ItemElements\ItemComponent.cs" />
     <Compile Include="ItemElements\ItemComponentTypeCode.cs" />
     <Compile Include="ItemFactory.cs" />
+    <Compile Include="Monster.cs" />
+    <Compile Include="NPCs\Seller.cs" />
+    <Compile Include="NPC_Factory.cs" />
     <Compile Include="PlayerManager.cs" />
     <Compile Include="Protocols\InputStringResponseParameterCode.cs" />
+    <Compile Include="Store.cs" />
+    <Compile Include="StoreElements\TradeInformation.cs" />
+    <Compile Include="StoreElements\TradeItemInformation.cs" />
+    <Compile Include="StoreFactory.cs" />
     <Compile Include="StoryElements\PlotTriggerConditions\HavingItemCondition.cs" />
     <Compile Include="StoryElements\PlotTriggerConditions\TalkWithNPC_Condition.cs" />
     <Compile Include="StoryElements\PlotTriggerEndEvents\ChangeNPC_ConversationContentEvent.cs" />
     <Compile Include="StoryElements\PlotTriggerEndEvents\GainItemEvent.cs" />
     <Compile Include="StoryElements\PlotTriggerEndEvents\RemoveNPC_Event.cs" />
     <Compile Include="StoryManager.cs" />
-    <Compile Include="WorldElements\NPC.cs" />
+    <Compile Include="NPC.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="WorldElements\Scene.cs" />
     <Compile Include="World.cs" />
@@ -82,7 +90,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Effectors\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

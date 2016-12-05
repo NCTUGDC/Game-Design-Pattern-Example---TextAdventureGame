@@ -9,10 +9,14 @@ namespace TextAdventureGame.Library.General.WorldElements
         public int SceneID { get; private set; }
         [MessagePackMember(id: 1, Name = "SceneName")]
         public string SceneName { get; private set; }
-        [MessagePackMember(id: 2, Name = "NPC_Dictionary")]
-        private Dictionary<int, NPC> NPC_Dictionary;
-        public IEnumerable<NPC> NPCs { get { return NPC_Dictionary.Values; } }
-        public int NPC_Count { get { return NPC_Dictionary.Count; } }
+        [MessagePackMember(id: 2, Name = "npcIDs")]
+        private List<int> npcIDs;
+        [MessagePackMember(id: 3, Name = "accessibleSceneIDs")]
+        private List<int> accessibleSceneIDs;
+        public IEnumerable<int> NPC_IDs { get { return npcIDs; } }
+        public IEnumerable<int> AccessibleSceneIDs { get { return accessibleSceneIDs; } }
+        public int NPC_Count { get { return npcIDs.Count; } }
+        public int AccessibleSceneCount { get { return accessibleSceneIDs.Count; } }
 
         [MessagePackDeserializationConstructor]
         public Scene() { }
@@ -20,33 +24,38 @@ namespace TextAdventureGame.Library.General.WorldElements
         {
             SceneID = sceneID;
             SceneName = sceneName;
-            NPC_Dictionary = new Dictionary<int, NPC>();
+            npcIDs = new List<int>();
+            accessibleSceneIDs = new List<int>();
         }
-        public bool ContainsNPC(int NPC_ID)
+        public bool ContainsNPC(int npcID)
         {
-            return NPC_Dictionary.ContainsKey(NPC_ID);
+            return npcIDs.Contains(npcID);
         }
-        public NPC FindNPC(int NPC_ID)
+        public bool ContainsAccessibleScene(int sceneID)
         {
-            if (ContainsNPC(NPC_ID))
-            {
-                return NPC_Dictionary[NPC_ID];
-            }
-            else
-            {
-                return null;
-            }
+            return accessibleSceneIDs.Contains(sceneID);
         }
-        public void AddNPC(NPC NPC)
+        public void AddNPC_ID(int npcID)
         {
-            if (!ContainsNPC(NPC.NPC_ID))
+            if (!ContainsNPC(npcID))
             {
-                NPC_Dictionary.Add(NPC.NPC_ID, NPC);
+                npcIDs.Add(npcID);
             }
         }
-        public bool RemoveNPC(int NPC_ID)
+        public bool RemoveNPC(int npcID)
         {
-            return NPC_Dictionary.Remove(NPC_ID);
+            return npcIDs.Remove(npcID);
+        }
+        public void AddAccessibleSceneID(int sceneID)
+        {
+            if (!ContainsAccessibleScene(sceneID))
+            {
+                accessibleSceneIDs.Add(sceneID);
+            }
+        }
+        public bool RemoveAccessibleSceneID(int sceneID)
+        {
+            return accessibleSceneIDs.Remove(sceneID);
         }
     }
 }

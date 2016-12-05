@@ -1,6 +1,6 @@
 ﻿using MsgPack.Serialization;
 
-namespace TextAdventureGame.Library.General.WorldElements
+namespace TextAdventureGame.Library.General
 {
     public class NPC
     {
