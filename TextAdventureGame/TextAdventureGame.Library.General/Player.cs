@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using TextAdventureGame.Library.General.ItemElements;
 
 namespace TextAdventureGame.Library.General
 {
@@ -27,6 +29,11 @@ namespace TextAdventureGame.Library.General
         }
         public Inventory Inventory { get; private set; }
         public AbilityFactors AbilityFactors { get; private set; }
+        public Equipment Weapon { get; set; }
+        public Equipment HeadEquipment { get; set; }
+        public Equipment BodyEquipment { get; set; }
+        public Equipment FootEquipment { get; set; }
+        public Equipment Accessory { get; set; }
 
         private int levelUpEXP;
         public int LevelUpEXP
@@ -68,6 +75,9 @@ namespace TextAdventureGame.Library.General
             }
         }
 
+        private List<int> skills;
+        public IEnumerable<int> Skills { get { return skills; } }
+
         private event Action<string> onNameChange;
         public event Action<string> OnNameChange { add { onNameChange += value; } remove { onNameChange -= value; } }
 
@@ -95,12 +105,25 @@ namespace TextAdventureGame.Library.General
                 SP = 25,
                 Power = 1,
                 Magic = 1,
-                Speed = 1,
+                Agile = 1,
                 Sensibility = 1
             };
             LevelUpEXP = 100;
             EXP = 0;
             AbilityPoint = 6;
+            skills = new List<int>();
+        }
+
+        public bool HasSkill(int skillID)
+        {
+            return skills.Contains(skillID);
+        }
+        public void LearnSkill(int skillID)
+        {
+            if(!HasSkill(skillID))
+            {
+                skills.Add(skillID);
+            }
         }
     }
 }

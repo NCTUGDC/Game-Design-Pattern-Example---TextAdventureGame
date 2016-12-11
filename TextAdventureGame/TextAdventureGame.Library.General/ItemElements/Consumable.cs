@@ -1,37 +1,43 @@
-﻿using System.Collections.Generic;
+﻿using MsgPack.Serialization;
+using System.Collections.Generic;
 using System.Linq;
+using TextAdventureGame.Library.General.Effectors;
 
 namespace TextAdventureGame.Library.General.ItemElements
 {
-    public class Consumable : ItemComponent
+    public class Consumable : Item
     {
+        [MessagePackMember(id: 2, Name = "ConsumableID")]
         public int ConsumableID { get; protected set; }
 
-        public override ItemComponentTypeCode ItemComponentTypeCode { get { return ItemComponentTypeCode.Consumables; } }
-        protected List<Effector> effectors;
-        public IEnumerable<Effector> Effectors { get { return effectors; } }
+        [MessagePackRuntimeCollectionItemType]
+        [MessagePackMember(id: 3, Name = "effectors")]
+        protected List<ConsumableEffector> effectors;
+        public IEnumerable<ConsumableEffector> Effectors { get { return effectors; } }
 
+        [MessagePackDeserializationConstructor]
+        public Consumable() { }
         public Consumable(int consumableID)
         {
             ConsumableID = consumableID;
-            effectors = new List<Effector>();
+            effectors = new List<ConsumableEffector>();
         }
-        public override bool Use(List<object> targets)
+        public bool Use(AbilityFactors abilityFactors)
         {
             if (effectors.Count != 0)
             {
-                return effectors.All(x => x.Affect(targets));
+                return effectors.All(x => x.Affect(abilityFactors));
             }
             else
             {
                 return false;
             }
         }
-        public void AddEffector(Effector effector)
+        public void AddEffector(ConsumableEffector effector)
         {
             effectors.Add(effector);
         }
-        public void RemoveEffector(Effector effector)
+        public void RemoveEffector(ConsumableEffector effector)
         {
             effectors.Remove(effector);
         }

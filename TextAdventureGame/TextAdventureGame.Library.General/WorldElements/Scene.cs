@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using MsgPack.Serialization;
+﻿using MsgPack.Serialization;
+using System.Collections.Generic;
 
 namespace TextAdventureGame.Library.General.WorldElements
 {
@@ -17,6 +17,7 @@ namespace TextAdventureGame.Library.General.WorldElements
         public IEnumerable<int> AccessibleSceneIDs { get { return accessibleSceneIDs; } }
         public int NPC_Count { get { return npcIDs.Count; } }
         public int AccessibleSceneCount { get { return accessibleSceneIDs.Count; } }
+        public MonsterZone MonsterZone { get; private set; }
 
         [MessagePackDeserializationConstructor]
         public Scene() { }
@@ -56,6 +57,10 @@ namespace TextAdventureGame.Library.General.WorldElements
         public bool RemoveAccessibleSceneID(int sceneID)
         {
             return accessibleSceneIDs.Remove(sceneID);
+        }
+        public void SetMonsterZone(MonsterZone monsterZone)
+        {
+            MonsterZone = monsterZone;
         }
     }
 }

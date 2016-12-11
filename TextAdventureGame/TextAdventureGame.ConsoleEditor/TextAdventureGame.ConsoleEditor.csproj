@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbilityType.cs" />
+    <Compile Include="AutoEditor.cs" />
     <Compile Include="ItemEditor.cs" />
     <Compile Include="ItemFactoryEditorElements\ItemFactoryControlHandler.cs" />
     <Compile Include="NPC_Editor.cs" />

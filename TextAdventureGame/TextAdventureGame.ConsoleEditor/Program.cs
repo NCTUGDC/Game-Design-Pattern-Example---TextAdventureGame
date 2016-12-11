@@ -16,6 +16,7 @@ namespace TextAdventureGame.ConsoleEditor
                 Console.WriteLine("\titem :物品編輯器");
                 Console.WriteLine("\tnpc :NPC編輯器");
                 Console.WriteLine("\tstore :商店編輯器");
+                Console.WriteLine("\tauto :自動設置所有遊戲資料");
                 Console.WriteLine("\texit :關閉編輯器");
                 switch (Console.ReadLine())
                 {
@@ -33,6 +34,9 @@ namespace TextAdventureGame.ConsoleEditor
                         break;
                     case "store":
                         editorControlHandler = new StoreEditor();
+                        break;
+                    case "auto":
+                        editorControlHandler = new AutoEditor();
                         break;
                     case "exit":
                         return;

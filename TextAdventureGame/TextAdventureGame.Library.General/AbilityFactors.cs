@@ -83,14 +83,14 @@ namespace TextAdventureGame.Library.General
             }
         }
 
-        private int speed;
-        public int Speed
+        private int agile;
+        public int Agile
         {
-            get { return speed; }
+            get { return agile; }
             set
             {
-                speed = value;
-                onSpeedChange?.Invoke(speed);
+                agile = value;
+                onAgileChange?.Invoke(agile);
             }
         }
 
@@ -129,8 +129,8 @@ namespace TextAdventureGame.Library.General
         private event Action<int> onMagicChange;
         public event Action<int> OnMagicChange { add { onMagicChange += value; } remove { onMagicChange -= value; } }
 
-        private event Action<int> onSpeedChange;
-        public event Action<int> OnSpeedChange { add { onSpeedChange += value; } remove { onSpeedChange -= value; } }
+        private event Action<int> onAgileChange;
+        public event Action<int> OnAgileChange { add { onAgileChange += value; } remove { onAgileChange -= value; } }
 
         private event Action<int> onSensibilityChange;
         public event Action<int> OnSensibilityChange { add { onSensibilityChange += value; } remove { onSensibilityChange -= value; } }

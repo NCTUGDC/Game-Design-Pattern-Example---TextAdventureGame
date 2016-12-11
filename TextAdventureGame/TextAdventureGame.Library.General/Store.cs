@@ -11,7 +11,7 @@ namespace TextAdventureGame.Library.General
         public int StoreID { get; private set; }
         [MessagePackMember(id: 1, Name = "StoreName")]
         public string StoreName { get; private set; }
-        [MessagePackMember(id: 2, Name = "StoreName")]
+        [MessagePackMember(id: 2, Name = "tradeInformations")]
         private List<TradeInformation> tradeInformations;
         [MessagePackIgnore]
         public List<TradeInformation> TradeInformations { get { return tradeInformations.ToList(); } }

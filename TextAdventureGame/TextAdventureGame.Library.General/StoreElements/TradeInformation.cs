@@ -16,6 +16,13 @@ namespace TextAdventureGame.Library.General.StoreElements
         [MessagePackIgnore]
         public IEnumerable<TradeItemInformation> Rewards { get { return rewards.ToList(); } }
 
+        public TradeInformation() { }
+        public TradeInformation(List<TradeItemInformation> costs, List<TradeItemInformation> rewards)
+        {
+            this.costs = costs;
+            this.rewards = rewards;
+        }
+
         public void AddCost(TradeItemInformation cost)
         {
             costs.Add(cost);

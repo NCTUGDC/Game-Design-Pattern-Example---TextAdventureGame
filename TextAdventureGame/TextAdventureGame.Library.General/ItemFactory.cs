@@ -27,7 +27,7 @@ namespace TextAdventureGame.Library.General
         {
             File.WriteAllBytes(fileName, SerializationHelper.Serialize(factory));
         }
-
+        [MessagePackRuntimeCollectionItemType]
         [MessagePackMember(id: 0, Name = "itemDictionary")]
         private Dictionary<int, Item> itemDictionary;
         public IEnumerable<Item> Items { get { return itemDictionary.Values; } }
@@ -60,9 +60,9 @@ namespace TextAdventureGame.Library.General
                 itemDictionary.Add(item.ItemID, item);
             }
         }
-        public bool RemoveItem(int item)
+        public bool RemoveItem(int itemID)
         {
-            return itemDictionary.Remove(item);
+            return itemDictionary.Remove(itemID);
         }
     }
 }
