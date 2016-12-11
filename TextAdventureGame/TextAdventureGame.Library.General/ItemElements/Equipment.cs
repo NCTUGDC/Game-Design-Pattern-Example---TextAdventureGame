@@ -25,7 +25,7 @@ namespace TextAdventureGame.Library.General.ItemElements
 
         [MessagePackDeserializationConstructor]
         public Equipment() { }
-        public Equipment(int equipmentID, EquipmentType equipmentType)
+        public Equipment(int itemID, string itemName, int equipmentID, EquipmentType equipmentType) : base(itemID, itemName)
         {
             EquipmentID = equipmentID;
             equipmentEffectors = new List<EquipmentEffector>();

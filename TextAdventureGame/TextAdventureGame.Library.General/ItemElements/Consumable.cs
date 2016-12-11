@@ -17,7 +17,7 @@ namespace TextAdventureGame.Library.General.ItemElements
 
         [MessagePackDeserializationConstructor]
         public Consumable() { }
-        public Consumable(int consumableID)
+        public Consumable(int itemID, string itemName, int consumableID) : base(itemID, itemName)
         {
             ConsumableID = consumableID;
             effectors = new List<ConsumableEffector>();

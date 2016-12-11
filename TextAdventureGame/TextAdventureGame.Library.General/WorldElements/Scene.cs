@@ -17,6 +17,7 @@ namespace TextAdventureGame.Library.General.WorldElements
         public IEnumerable<int> AccessibleSceneIDs { get { return accessibleSceneIDs; } }
         public int NPC_Count { get { return npcIDs.Count; } }
         public int AccessibleSceneCount { get { return accessibleSceneIDs.Count; } }
+        [MessagePackMember(id: 4, Name = "MonsterZone")]
         public MonsterZone MonsterZone { get; private set; }
 
         [MessagePackDeserializationConstructor]

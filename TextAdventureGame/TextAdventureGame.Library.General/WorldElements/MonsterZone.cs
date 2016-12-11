@@ -11,10 +11,10 @@ namespace TextAdventureGame.Library.General.WorldElements
         [MessagePackMember(id: 1, Name = "encounterProbability")]
         private List<int> encounterProbability;
 
-        public MonsterZone()
+        public MonsterZone(List<List<int>> monsterTeams, List<int> encounterProbability)
         {
-            monsterTeams = new List<List<int>>();
-            encounterProbability = new List<int>();
+            this.monsterTeams = monsterTeams;
+            this.encounterProbability = encounterProbability;
         }
         public List<int> GetMonsterTeam()
         {

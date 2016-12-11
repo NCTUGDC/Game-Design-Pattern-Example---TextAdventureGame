@@ -2,7 +2,7 @@
 
 namespace TextAdventureGame.Library.General.Effectors.EquipmentEffectors
 {
-    class PhysicalAttackPointEffector : EquipmentEffector
+    public class PhysicalAttackPointEffector : EquipmentEffector
     {
         [MessagePackMember(id: 0, Name = "PhysicalAttackPoint")]
         public int PhysicalAttackPoint { get; private set; }
