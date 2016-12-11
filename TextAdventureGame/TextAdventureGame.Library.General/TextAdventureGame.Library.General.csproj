@@ -101,8 +101,10 @@
     <Compile Include="StoreFactory.cs" />
     <Compile Include="StoryElements\PlotTriggerConditions\HavingItemCondition.cs" />
     <Compile Include="StoryElements\PlotTriggerConditions\TalkWithNPC_Condition.cs" />
+    <Compile Include="StoryElements\PlotTriggerEndEvents\AddNPC_Event.cs" />
     <Compile Include="StoryElements\PlotTriggerEndEvents\ChangeNPC_ConversationContentEvent.cs" />
     <Compile Include="StoryElements\PlotTriggerEndEvents\GainItemEvent.cs" />
+    <Compile Include="StoryElements\PlotTriggerEndEvents\RemoveItemEvent.cs" />
     <Compile Include="StoryElements\PlotTriggerEndEvents\RemoveNPC_Event.cs" />
     <Compile Include="StoryManager.cs" />
     <Compile Include="NPC.cs" />

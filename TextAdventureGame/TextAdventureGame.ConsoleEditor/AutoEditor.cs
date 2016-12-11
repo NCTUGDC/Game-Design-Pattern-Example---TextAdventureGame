@@ -1014,9 +1014,7 @@ namespace TextAdventureGame.ConsoleEditor
         }
         private void SetupStory()
         {
-            Story story = new Story();
-            Story.SaveStory("MainStory", story);
-            Console.WriteLine("Story設置完成!");
+            Console.WriteLine("Story不設置!");
         }
     }
 }
