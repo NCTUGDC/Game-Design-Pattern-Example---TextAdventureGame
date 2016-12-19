@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TextAdventureGame.Library.General.ItemElements;
+using System.Linq;
 
 namespace TextAdventureGame.Library.General
 {
@@ -74,6 +75,24 @@ namespace TextAdventureGame.Library.General
                 onAbilityPointChange?.Invoke(abilityPoint);
             }
         }
+        public BattleFactors BattleFactors
+        {
+            get
+            {
+                BattleFactors bf = BattleFactors.FromAbilityFactors(AbilityFactors);
+                if (HeadEquipment != null)
+                    bf = HeadEquipment.Use(bf);
+                if (BodyEquipment != null)
+                    bf = BodyEquipment.Use(bf);
+                if (FootEquipment != null)
+                    bf = FootEquipment.Use(bf);
+                if (Weapon != null)
+                    bf = Weapon.Use(bf);
+                if (Accessory != null)
+                    bf = Accessory.Use(bf);
+                return bf;
+            }
+        }
 
         private List<int> skills;
         public IEnumerable<int> Skills { get { return skills; } }
@@ -93,6 +112,9 @@ namespace TextAdventureGame.Library.General
         private event Action<int> onAbilityPointChange;
         public event Action<int> OnAbilityPointChange { add { onAbilityPointChange += value; } remove { onAbilityPointChange -= value; } }
 
+        private event Action<int> onLearnSkill;
+        public event Action<int> OnLearnSkill { add { onLearnSkill += value; } remove { onLearnSkill -= value; } }
+
         public Player()
         {
             Inventory = new Inventory();
@@ -108,10 +130,29 @@ namespace TextAdventureGame.Library.General
                 Agile = 1,
                 Sensibility = 1
             };
-            LevelUpEXP = 100;
+            LevelUpEXP = LevelEXPTable.GetLevelUpEXP(1);
             EXP = 0;
             AbilityPoint = 6;
             skills = new List<int>();
+            locatedSceneID = 1;
+
+            Action learnSkillAction = () => 
+            {
+                var remaindedSkills = SkillFactory.Instance.Skills.Where(x => !HasSkill(x.SkillID));
+                foreach (var skill in remaindedSkills)
+                {
+                    if (skill.CanLearn(this))
+                    {
+                        LearnSkill(skill.SkillID);
+                    }
+                }
+            };
+
+            AbilityFactors.OnLevelChange += (value1, value2) => learnSkillAction();
+            AbilityFactors.OnPowerChange += (value) => learnSkillAction();
+            AbilityFactors.OnMagicChange += (value) => learnSkillAction();
+            AbilityFactors.OnAgileChange += (value) => learnSkillAction();
+            AbilityFactors.OnSensibilityChange += (value) => learnSkillAction();
         }
 
         public bool HasSkill(int skillID)
@@ -123,6 +164,7 @@ namespace TextAdventureGame.Library.General
             if(!HasSkill(skillID))
             {
                 skills.Add(skillID);
+                onLearnSkill?.Invoke(skillID);
             }
         }
     }

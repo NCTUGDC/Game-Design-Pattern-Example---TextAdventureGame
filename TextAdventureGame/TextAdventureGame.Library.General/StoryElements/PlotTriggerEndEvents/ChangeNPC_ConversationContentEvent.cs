@@ -15,7 +15,7 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents
                 return string.Format("變更NPC對話內容 NPC ID: {0}, 內容： {1}", NPC_ID, ConversationContent);
             }
         }
-
+        public ChangeNPC_ConversationContentEvent() { }
         public ChangeNPC_ConversationContentEvent(int endEventID, int npcID, string conversationContent) : base(endEventID)
         {
             NPC_ID = npcID;

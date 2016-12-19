@@ -16,6 +16,7 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents
             }
         }
 
+        public RemoveNPC_Event() { }
         public RemoveNPC_Event(int endEventID, int sceneID, int npcID) : base(endEventID)
         {
             SceneID = sceneID;

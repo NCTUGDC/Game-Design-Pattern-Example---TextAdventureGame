@@ -1,4 +1,7 @@
-﻿namespace TextAdventureGame.Library.General
+﻿using System.Collections.Generic;
+using TextAdventureGame.Library.General.StoryElements;
+
+namespace TextAdventureGame.Library.General
 {
     public class StoryManager
     {

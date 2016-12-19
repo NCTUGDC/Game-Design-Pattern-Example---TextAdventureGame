@@ -1,11 +1,14 @@
-﻿using System;
+﻿using MsgPack.Serialization;
+using System;
 
 namespace TextAdventureGame.Library.General
 {
     public class AbilityFactors
     {
         #region properties
+        [MessagePackMember(id: 0, Name = "level")]
         private int level;
+        [MessagePackIgnore]
         public int Level
         {
             get { return level; }
@@ -17,7 +20,9 @@ namespace TextAdventureGame.Library.General
             }
         }
 
+        [MessagePackMember(id: 1, Name = "maxHP")]
         private int maxHP;
+        [MessagePackIgnore]
         public int MaxHP
         {
             get { return maxHP; }
@@ -28,7 +33,9 @@ namespace TextAdventureGame.Library.General
             }
         }
 
+        [MessagePackMember(id: 2, Name = "hp")]
         private int hp;
+        [MessagePackIgnore]
         public int HP
         {
             get { return hp; }
@@ -39,7 +46,9 @@ namespace TextAdventureGame.Library.General
             }
         }
 
+        [MessagePackMember(id: 3, Name = "maxSP")]
         private int maxSP;
+        [MessagePackIgnore]
         public int MaxSP
         {
             get { return maxSP; }
@@ -50,7 +59,9 @@ namespace TextAdventureGame.Library.General
             }
         }
 
+        [MessagePackMember(id: 4, Name = "sp")]
         private int sp;
+        [MessagePackIgnore]
         public int SP
         {
             get { return sp; }
@@ -61,7 +72,9 @@ namespace TextAdventureGame.Library.General
             }
         }
 
+        [MessagePackMember(id: 5, Name = "power")]
         private int power;
+        [MessagePackIgnore]
         public int Power
         {
             get { return power; }
@@ -72,7 +85,9 @@ namespace TextAdventureGame.Library.General
             }
         }
 
+        [MessagePackMember(id: 6, Name = "magic")]
         private int magic;
+        [MessagePackIgnore]
         public int Magic
         {
             get { return magic; }
@@ -83,7 +98,9 @@ namespace TextAdventureGame.Library.General
             }
         }
 
+        [MessagePackMember(id: 7, Name = "agile")]
         private int agile;
+        [MessagePackIgnore]
         public int Agile
         {
             get { return agile; }
@@ -94,7 +111,9 @@ namespace TextAdventureGame.Library.General
             }
         }
 
+        [MessagePackMember(id: 8, Name = "sensibility")]
         private int sensibility;
+        [MessagePackIgnore]
         public int Sensibility
         {
             get { return sensibility; }

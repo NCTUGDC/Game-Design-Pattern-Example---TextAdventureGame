@@ -13,6 +13,7 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents.I
             }
         }
 
+        public InputPlayerNameEvent() { }
         public InputPlayerNameEvent(int endEventID) : base(endEventID)
         {
         }

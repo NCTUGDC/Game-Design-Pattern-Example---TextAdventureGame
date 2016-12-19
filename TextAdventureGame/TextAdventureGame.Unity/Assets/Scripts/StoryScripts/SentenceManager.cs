@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System;
-using TextAdventureGame.Library.General;
+﻿using TextAdventureGame.Library.General;
+using TextAdventureGame.Library.General.StoryElements;
+using UnityEngine;
 
 namespace TextAdventureGame.Unity.Scripts.StoryScripts
 {
@@ -15,37 +14,100 @@ namespace TextAdventureGame.Unity.Scripts.StoryScripts
         private Story story;
         private Canvas canvas;
 
-        void Awake()
-        {
-            instance = this;
-            StoryManager.InitialManager(Story.LoadStory("MainStory"));
-            story = StoryManager.Instance.Story;
-            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        }
-
         void Start()
         {
-            story.ToNextChapter();
-            story.CurrentChapter.ToNextSection();
-            story.CurrentChapter.CurrentSection.ToNextParagraph();
-            story.CurrentChapter.CurrentSection.CurrentParagraph.ToNextSentence();
-            ShowSentence();
+            instance = this;
+            story = StoryManager.Instance.Story;
+            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            story.JumpToChapter(1);
+            story.CurrentChapter.JumpToSection(2);
+            story.CurrentChapter.CurrentSection.JumpToParagraph(1);
+            story.CurrentChapter.CurrentSection.CurrentParagraph.JumpToSentence(1);
+            ToNext();
         }
 
-        public void ToNextSentence()
+        public void ToNext()
         {
-            if(story.CurrentChapter.CurrentSection.CurrentParagraph.ToNextSentence())
+            if(story.CurrentChapter == null)
             {
-                ShowSentence();
+                ToNextChapter(story);
+            }
+            else if(story.CurrentChapter.CurrentSection == null)
+            {
+                ToNextSection(story.CurrentChapter);
+            }
+            else if(story.CurrentChapter.CurrentSection.CurrentParagraph == null)
+            {
+                ToNextParagraph(story.CurrentChapter.CurrentSection);
+            }
+            else if(story.CurrentChapter.CurrentSection.CurrentParagraph.CurrentSentence == null)
+            {
+                ToNextSentence(story.CurrentChapter.CurrentSection.CurrentParagraph);
+            }
+            else if(!story.CurrentChapter.CurrentSection.CurrentParagraph.CurrentSentence.IsEnd)
+            {
+                ShowSentence(story.CurrentChapter.CurrentSection.CurrentParagraph.CurrentSentence);
+            }
+            else if(!story.CurrentChapter.CurrentSection.CurrentParagraph.IsEnd)
+            {
+                ToNextSentence(story.CurrentChapter.CurrentSection.CurrentParagraph);
+            }
+            else if (!story.CurrentChapter.CurrentSection.IsEnd)
+            {
+                ToNextParagraph(story.CurrentChapter.CurrentSection);
+            }
+            else if (!story.CurrentChapter.IsEnd)
+            {
+                ToNextSection(story.CurrentChapter);
+            }
+            else if (!story.IsEnd)
+            {
+                ToNextChapter(story);
             }
         }
-        void ShowSentence()
+        private void ToNextChapter(Story story)
         {
-            SentenceDialog dialog = Instantiate(sentenceDialogPrefab);
-            dialog.transform.SetParent(canvas.transform);
-            dialog.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -225);
+            if (story.ToNextChapter())
+            {
+                ToNextSection(story.CurrentChapter);
+            }
+        }
+        private void ToNextSection(Chapter chapter)
+        {
+            if (chapter.ToNextSection())
+            {
+                ToNextParagraph(chapter.CurrentSection);
+            }
+        }
+        private void ToNextParagraph(Section section)
+        {
+            if (section.ToNextParagraph())
+            {
+                ToNextSentence(section.CurrentParagraph);
+            }
+        }
+        private void ToNextSentence(Paragraph paragraph)
+        {
+            if (paragraph.ToNextSentence())
+            {
+                paragraph.CurrentSentence.JumpToLine(0);
+                if (paragraph.CurrentSentence.IsEnd)
+                {
+                    paragraph.CurrentSentence.ExecuteEvents();
+                }
+                ShowSentence(paragraph.CurrentSentence);
+            }
+        }
+        void ShowSentence(Sentence sentence)
+        {
+            if(sentence != null)
+            {
+                SentenceDialog dialog = Instantiate(sentenceDialogPrefab);
+                dialog.transform.SetParent(canvas.transform);
+                dialog.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -225);
 
-            dialog.Sentence = story.CurrentChapter.CurrentSection.CurrentParagraph.CurrentSentence;
+                dialog.Sentence = sentence;
+            }
         }
     }
 }

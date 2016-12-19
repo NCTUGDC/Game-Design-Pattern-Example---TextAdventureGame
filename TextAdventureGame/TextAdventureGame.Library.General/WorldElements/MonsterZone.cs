@@ -1,5 +1,6 @@
 ﻿using MsgPack.Serialization;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace TextAdventureGame.Library.General.WorldElements
@@ -10,7 +11,9 @@ namespace TextAdventureGame.Library.General.WorldElements
         private List<List<int>> monsterTeams;
         [MessagePackMember(id: 1, Name = "encounterProbability")]
         private List<int> encounterProbability;
+        public int EncounterProbability { get { return encounterProbability.FirstOrDefault(); } }
 
+        public MonsterZone() { }
         public MonsterZone(List<List<int>> monsterTeams, List<int> encounterProbability)
         {
             this.monsterTeams = monsterTeams;
@@ -22,10 +25,9 @@ namespace TextAdventureGame.Library.General.WorldElements
             int number = randomGenerator.Next(1, 101);
             for (int i = 0; i < monsterTeams.Count; i++)
             {
-                List<int> monsterTeam = monsterTeams[i];
-                if (encounterProbability[i] <= number)
+                if (encounterProbability[i] >= number)
                 {
-                    return monsterTeam;
+                    return monsterTeams[i];
                 }
             }
             return null;

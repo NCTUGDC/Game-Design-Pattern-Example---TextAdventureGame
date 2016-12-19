@@ -16,6 +16,7 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents
             }
         }
 
+        public AddNPC_Event() { }
         public AddNPC_Event(int endEventID, int sceneID, int npcID) : base(endEventID)
         {
             SceneID = sceneID;

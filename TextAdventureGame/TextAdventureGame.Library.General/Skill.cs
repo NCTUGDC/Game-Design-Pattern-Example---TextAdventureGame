@@ -50,7 +50,8 @@ namespace TextAdventureGame.Library.General
         }
         public void Use(BattleFactors casterFactors, List<BattleFactors> targetsFactors)
         {
-            foreach(var skillEffector in skillEffectors)
+            casterFactors.skillPoint -= RequiredSP;
+            foreach (var skillEffector in skillEffectors)
             {
                 skillEffector.Use(casterFactors, targetsFactors);
             }

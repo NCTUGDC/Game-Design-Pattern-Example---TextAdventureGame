@@ -51,6 +51,7 @@ namespace TextAdventureGame.Library.General
             InventoryItemInfo info = FindInventoryItemInfo(item.ItemID);
             if (info == null)
             {
+                info = new InventoryItemInfo(item.ItemID, count);
                 itemInfoDictionary.Add(info.ItemID, info);
             }
             else

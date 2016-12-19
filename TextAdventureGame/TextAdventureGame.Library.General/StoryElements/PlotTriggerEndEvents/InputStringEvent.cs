@@ -4,6 +4,7 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents
 {
     public abstract class InputStringEvent : PlotTriggerEvent, IInputActionCallbackTarget
     {
+        public InputStringEvent() { }
         protected InputStringEvent(int endEventID) : base(endEventID)
         {
         }

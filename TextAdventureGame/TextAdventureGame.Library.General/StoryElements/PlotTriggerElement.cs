@@ -36,9 +36,9 @@ namespace TextAdventureGame.Library.General.StoryElements
         {
             return triggerConditions.RemoveAll(x => x.ConditionID == conditionID);
         }
-        public bool IsSufficientPlotTriggerConditions(List<object> informationProviders)
+        public bool IsSufficientPlotTriggerConditions()
         {
-            return informationProviders != null && (informationProviders.Count == 0 || triggerConditions.TrueForAll(x => x.IsEligible()));
+            return triggerConditions.TrueForAll(x => x.IsEligible());
         }
 
         public void AddEndEvent(PlotTriggerEvent endEvent)

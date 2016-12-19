@@ -12,8 +12,8 @@ namespace TextAdventureGame.Library.UnitTest
         {
             Chapter chapter = new Chapter(0, "test");
 
-            Assert.AreEqual(chapter.IsSufficientPlotTriggerConditions(null), false);
-            Assert.AreEqual(chapter.IsSufficientPlotTriggerConditions(new List<object>()), true);
+            //Assert.AreEqual(chapter.IsSufficientPlotTriggerConditions(), false);
+            Assert.AreEqual(chapter.IsSufficientPlotTriggerConditions(), true);
         }
     }
 }

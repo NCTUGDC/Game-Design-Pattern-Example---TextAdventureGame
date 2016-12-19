@@ -75,6 +75,8 @@ namespace TextAdventureGame.Library.General.StoryElements
             else
             {
                 currentLineIndex++;
+                if (IsEnd)
+                    ExecuteEvents();
                 return true;
             }
         }

@@ -16,13 +16,12 @@ namespace TextAdventureGame.Unity.Scripts.StoryScripts
             private get { return sentence; }
             set
             {
-                if(value != null)
+                sentence = value;
+                speakerNameLabel.text = sentence.SpeakerName;
+                dialogTextArea.text = sentence.CurrentLine;
+                if(sentence.CurrentLine == "")
                 {
-                    sentence = value;
-                    
-                    speakerNameLabel.text = Sentence.SpeakerName;
-                    Sentence.ToNextLine();
-                    dialogTextArea.text = Sentence.CurrentLine;
+                    NextLine();
                 }
             }
         }
@@ -46,7 +45,7 @@ namespace TextAdventureGame.Unity.Scripts.StoryScripts
                 }
                 else
                 {
-                    SentenceManager.Instance.ToNextSentence();
+                    SentenceManager.Instance.ToNext();
                     Destroy(gameObject);
                 }
             }

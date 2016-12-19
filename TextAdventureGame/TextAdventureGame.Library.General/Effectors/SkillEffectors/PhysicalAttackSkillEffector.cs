@@ -1,4 +1,5 @@
 ﻿using MsgPack.Serialization;
+using System;
 using System.Collections.Generic;
 
 namespace TextAdventureGame.Library.General.Effectors.SkillEffectors
@@ -8,6 +9,15 @@ namespace TextAdventureGame.Library.General.Effectors.SkillEffectors
         [MessagePackMember(id: 0, Name = "PhysicalAttack")]
         public int PhysicalAttack { get; private set; }
 
+        public override string Information
+        {
+            get
+            {
+                return string.Format("物攻{0}點", PhysicalAttack);
+            }
+        }
+
+        public PhysicalAttackSkillEffector() { }
         public PhysicalAttackSkillEffector(int physicalAttack)
         {
             PhysicalAttack = physicalAttack;
@@ -18,7 +28,7 @@ namespace TextAdventureGame.Library.General.Effectors.SkillEffectors
             int physicalAttackPoint = casterFactors.physicalAttackPoint + PhysicalAttack;
             foreach(var factors in targetsFactors)
             {
-                factors.healthPoint -= physicalAttackPoint - factors.physicalDefencePoint;
+                factors.healthPoint -= Math.Max(physicalAttackPoint - factors.physicalDefencePoint, 1);
             }
         }
     }

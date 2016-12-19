@@ -9,6 +9,7 @@ namespace TextAdventureGame.Library.General.StoryElements
         public int ConditionID { get; private set; }
         public abstract string ConditionInformation { get; }
 
+        public PlotTriggerCondition() { }
         protected PlotTriggerCondition(int conditionID)
         {
             ConditionID = conditionID;

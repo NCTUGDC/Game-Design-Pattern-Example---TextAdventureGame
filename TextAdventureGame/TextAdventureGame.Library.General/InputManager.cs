@@ -2,24 +2,23 @@
 
 namespace TextAdventureGame.Library.General
 {
-    public class InputManager
+    public abstract class InputManager
     {
-        private static InputManager instance;
-        public static InputManager Instance { get { return instance; } }
+        public static InputManager Instance { get; private set; }
 
-        public static void InitialManager()
+        public static void InitialManager(InputManager inputManager)
         {
-            instance = new InputManager();
+            Instance = inputManager;
         }
 
         private IInputActionCallbackTarget callbackTarget;
         public int TalkingNPC_ID { get; set; }
 
-        public void InputStringRequest(IInputActionCallbackTarget callbackTarget)
+        public virtual void InputStringRequest(IInputActionCallbackTarget callbackTarget)
         {
             this.callbackTarget = callbackTarget;
         }
-        public void InputStringResponse(Dictionary<byte, object> parameters)
+        public virtual void InputStringResponse(Dictionary<byte, object> parameters)
         {
             callbackTarget.Response(parameters);
         }

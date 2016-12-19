@@ -15,6 +15,7 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerConditions
             }
         }
 
+        public EnterSceneCondition() { }
         public EnterSceneCondition(int conditionID, int sceneID) : base(conditionID)
         {
             SceneID = sceneID;

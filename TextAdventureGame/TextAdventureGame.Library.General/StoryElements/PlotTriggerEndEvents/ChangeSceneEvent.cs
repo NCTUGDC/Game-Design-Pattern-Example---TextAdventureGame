@@ -13,7 +13,7 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents
                 return string.Format("更改場景 場景ID： {0}", SceneID);
             }
         }
-
+        public ChangeSceneEvent() { }
         public ChangeSceneEvent(int endEventID, int sceneID) : base(endEventID)
         {
             SceneID = sceneID;

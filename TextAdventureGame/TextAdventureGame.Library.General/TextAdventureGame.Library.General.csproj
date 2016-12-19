@@ -87,6 +87,7 @@
     <Compile Include="ItemElements\EquipmentType.cs" />
     <Compile Include="ItemElements\InventoryItemInfo.cs" />
     <Compile Include="ItemFactory.cs" />
+    <Compile Include="LevelEXPTable.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="MonsterFactory.cs" />
     <Compile Include="NPCs\Seller.cs" />

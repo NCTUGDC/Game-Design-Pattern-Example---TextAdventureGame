@@ -15,6 +15,7 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerConditions
             }
         }
 
+        public TalkWithNPC_Condition() { }
         public TalkWithNPC_Condition(int conditionID, int npcID) : base(conditionID)
         {
             NPC_ID = npcID;

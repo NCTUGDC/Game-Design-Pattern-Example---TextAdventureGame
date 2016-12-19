@@ -1,4 +1,5 @@
 ﻿using MsgPack.Serialization;
+using System;
 using System.Collections.Generic;
 
 namespace TextAdventureGame.Library.General.Effectors.SkillEffectors
@@ -8,6 +9,15 @@ namespace TextAdventureGame.Library.General.Effectors.SkillEffectors
         [MessagePackMember(id: 0, Name = "MagicalAttack")]
         public int MagicalAttack { get; private set; }
 
+        public override string Information
+        {
+            get
+            {
+                return string.Format("魔攻{0}點 以對象SP作為傷害計算", MagicalAttack);
+            }
+        }
+
+        public MagicalSP_AttackSkillEffector() { }
         public MagicalSP_AttackSkillEffector(int magicalAttack)
         {
             MagicalAttack = magicalAttack;
@@ -18,7 +28,7 @@ namespace TextAdventureGame.Library.General.Effectors.SkillEffectors
             int magicalAttackPoint = casterFactors.magicalAttackPoint + MagicalAttack;
             foreach (var factors in targetsFactors)
             {
-                factors.skillPoint -= magicalAttackPoint - factors.magicalDefencePoint;
+                factors.skillPoint -= Math.Max(magicalAttackPoint - factors.magicalDefencePoint, 1);
             }
         }
     }

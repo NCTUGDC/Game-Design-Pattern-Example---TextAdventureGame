@@ -7,6 +7,15 @@ namespace TextAdventureGame.Library.General.Effectors.ConsumableEffectors
         [MessagePackMember(id: 0, Name = "SP")]
         public int SP { get; private set; }
 
+        public override string Information
+        {
+            get
+            {
+                return string.Format("SP+{0}", SP);
+            }
+        }
+
+        public SPConsumableEffector() { }
         public SPConsumableEffector(int sp)
         {
             SP = sp;

@@ -5,7 +5,7 @@ namespace TextAdventureGame.Library.General.NPCs
     public class Seller : NPC
     {
         [MessagePackMember(id: 3, Name = "StoreID")]
-        public int StoreID { get; set; }
+        public int StoreID { get; private set; }
 
         [MessagePackDeserializationConstructor]
         public Seller() { }

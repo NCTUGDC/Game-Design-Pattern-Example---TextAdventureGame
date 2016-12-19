@@ -63,7 +63,17 @@ namespace TextAdventureGame.Library.General.StoryElements
             else
             {
                 currentSentenceIndex++;
-                return true;
+                if (CurrentSentence.IsSufficientPlotTriggerConditions())
+                {
+                    if (IsEnd)
+                        ExecuteEvents();
+                    return true;
+                }
+                else
+                {
+                    currentSentenceIndex--;
+                    return false;
+                }
             }
         }
         public bool JumpToSentence(int sentenceID)

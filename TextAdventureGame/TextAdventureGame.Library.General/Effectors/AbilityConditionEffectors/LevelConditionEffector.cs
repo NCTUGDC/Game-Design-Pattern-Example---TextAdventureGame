@@ -7,6 +7,15 @@ namespace TextAdventureGame.Library.General.Effectors.AbilityConditionEffectors
         [MessagePackMember(id: 0, Name = "Level")]
         public int Level { get; private set; }
 
+        public override string Information
+        {
+            get
+            {
+                return string.Format("等級：{0}", Level);
+            }
+        }
+
+        public LevelConditionEffector() { }
         public LevelConditionEffector(int level)
         {
             Level = level;

@@ -8,6 +8,18 @@ namespace TextAdventureGame.Library.General.Effectors.SkillEffectors
         [MessagePackMember(id: 1, Name = "SpeedPoint")]
         public int SpeedPoint { get; private set; }
 
+        public override string Information
+        {
+            get
+            {
+                if(SpeedPoint > 0)
+                    return string.Format("使對象速度提升{0}點{1}回合", SpeedPoint, SustainRound);
+                else
+                    return string.Format("使對象速度下降{0}點{1}回合", -SpeedPoint, SustainRound);
+            }
+        }
+
+        public TargetSpeedPointSkillEffector() { }
         public TargetSpeedPointSkillEffector(int sustainRound, int speedPoint) : base(sustainRound)
         {
             SpeedPoint = speedPoint;
@@ -19,6 +31,10 @@ namespace TextAdventureGame.Library.General.Effectors.SkillEffectors
             {
                 factors.speedPoint += SpeedPoint;
             }
+        }
+        public override void End(BattleFactors affectedBF)
+        {
+            affectedBF.speedPoint -= SpeedPoint;
         }
     }
 }

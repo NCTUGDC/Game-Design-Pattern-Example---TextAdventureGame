@@ -17,6 +17,7 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerConditions
             }
         }
 
+        public HavingItemCondition() { }
         public HavingItemCondition(int conditionID, int itemID, int itemCount) : base(conditionID)
         {
             ItemID = itemID;

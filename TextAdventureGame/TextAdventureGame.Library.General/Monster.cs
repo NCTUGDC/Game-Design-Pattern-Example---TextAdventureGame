@@ -41,7 +41,7 @@ namespace TextAdventureGame.Library.General
             for(int i = 0; i < skills.Count; i++)
             {
                 int skillID = skills[i];
-                if(skillProbabilityDictionary.ContainsKey(skillID) && skillProbabilityDictionary[skillID] <= number)
+                if(skillProbabilityDictionary.ContainsKey(skillID) && skillProbabilityDictionary[skillID] >= number)
                 {
                     return SkillFactory.Instance.FindSkill(skillID);
                 }

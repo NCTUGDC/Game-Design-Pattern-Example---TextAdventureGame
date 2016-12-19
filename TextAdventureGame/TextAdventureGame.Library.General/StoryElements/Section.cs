@@ -68,7 +68,17 @@ namespace TextAdventureGame.Library.General.StoryElements
             else
             {
                 currentParagraphIndex++;
-                return true;
+                if (CurrentParagraph.IsSufficientPlotTriggerConditions())
+                {
+                    if (IsEnd)
+                        ExecuteEvents();
+                    return true;
+                }
+                else
+                {
+                    currentParagraphIndex--;
+                    return false;
+                }
             }
         }
         public bool JumpToParagraph(int paragraphID)

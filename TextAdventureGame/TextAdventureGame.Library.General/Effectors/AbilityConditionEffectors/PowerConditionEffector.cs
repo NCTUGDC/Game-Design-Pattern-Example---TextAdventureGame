@@ -7,6 +7,15 @@ namespace TextAdventureGame.Library.General.Effectors.AbilityConditionEffectors
         [MessagePackMember(id: 0, Name = "Power")]
         public int Power { get; private set; }
 
+        public override string Information
+        {
+            get
+            {
+                return string.Format("力量：{0}", Power);
+            }
+        }
+
+        public PowerConditionEffector() { }
         public PowerConditionEffector(int power)
         {
             Power = power;

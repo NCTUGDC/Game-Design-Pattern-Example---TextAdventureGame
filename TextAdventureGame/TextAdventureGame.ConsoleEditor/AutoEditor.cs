@@ -388,7 +388,9 @@ namespace TextAdventureGame.ConsoleEditor
             {
                 Level = 1,
                 MaxHP = 10,
+                HP = 10,
                 MaxSP = 0,
+                SP = 0,
                 Power = 3,
                 Magic = 1,
                 Agile = 1,
@@ -399,7 +401,9 @@ namespace TextAdventureGame.ConsoleEditor
             {
                 Level = 2,
                 MaxHP = 20,
+                HP = 20,
                 MaxSP = 5,
+                SP = 5,
                 Power = 3,
                 Magic = 2,
                 Agile = 2,
@@ -410,7 +414,9 @@ namespace TextAdventureGame.ConsoleEditor
             {
                 Level = 4,
                 MaxHP = 35,
+                HP = 35,
                 MaxSP = 35,
+                SP = 35,
                 Power = 6,
                 Magic = 3,
                 Agile = 3,
@@ -421,7 +427,9 @@ namespace TextAdventureGame.ConsoleEditor
             {
                 Level = 6,
                 MaxHP = 50,
+                HP = 50,
                 MaxSP = 50,
+                SP = 50,
                 Power = 4,
                 Magic = 4,
                 Agile = 5,
@@ -432,7 +440,9 @@ namespace TextAdventureGame.ConsoleEditor
             {
                 Level = 8,
                 MaxHP = 80,
+                HP = 80,
                 MaxSP = 60,
+                SP = 60,
                 Power = 12,
                 Magic = 2,
                 Agile = 7,
@@ -443,7 +453,9 @@ namespace TextAdventureGame.ConsoleEditor
             {
                 Level = 12,
                 MaxHP = 120,
+                HP = 120,
                 MaxSP = 200,
+                SP = 200,
                 Power = 3,
                 Magic = 15,
                 Agile = 12,
@@ -454,7 +466,9 @@ namespace TextAdventureGame.ConsoleEditor
             {
                 Level = 15,
                 MaxHP = 200,
+                HP = 200,
                 MaxSP = 100,
+                SP = 100,
                 Power = 18,
                 Magic = 2,
                 Agile = 14,
@@ -465,7 +479,9 @@ namespace TextAdventureGame.ConsoleEditor
             {
                 Level = 18,
                 MaxHP = 300,
+                HP = 300,
                 MaxSP = 350,
+                SP = 350,
                 Power = 20,
                 Magic = 20,
                 Agile = 5,
@@ -476,7 +492,9 @@ namespace TextAdventureGame.ConsoleEditor
             {
                 Level = 25,
                 MaxHP = 500,
+                HP = 500,
                 MaxSP = 600,
+                SP = 600,
                 Power = 17,
                 Magic = 19,
                 Agile = 18,
@@ -624,10 +642,10 @@ namespace TextAdventureGame.ConsoleEditor
             時裝.AddAbilityConditionEffector(new PowerConditionEffector(5));
             factory.AddItem(時裝);
             Equipment 基礎法袍 = new Equipment(39, "基礎法袍", 18, EquipmentType.Body);
-            基礎法帽.AddEquipmentEffector(new PhysicalDefencePointEffector(3));
-            基礎法帽.AddEquipmentEffector(new MagicalDefencePointEffector(25));
-            基礎法帽.AddEquipmentEffector(new MagicalAttackPointEffector(4));
-            基礎法帽.AddAbilityConditionEffector(new MagicConditionEffector(20));
+            基礎法袍.AddEquipmentEffector(new PhysicalDefencePointEffector(3));
+            基礎法袍.AddEquipmentEffector(new MagicalDefencePointEffector(25));
+            基礎法袍.AddEquipmentEffector(new MagicalAttackPointEffector(4));
+            基礎法袍.AddAbilityConditionEffector(new MagicConditionEffector(20));
             factory.AddItem(基礎法袍);
 
             Equipment 皮製戰靴 = new Equipment(40, "皮製戰靴", 19, EquipmentType.Foot);
@@ -693,8 +711,12 @@ namespace TextAdventureGame.ConsoleEditor
                 rewards: new List<TradeItemInformation> { new TradeItemInformation { itemID = 11, count = 1 } })
             );
             茶店.AddTradeInformation(new TradeInformation(
-                costs: new List<TradeItemInformation> { new TradeItemInformation { itemID = 7, count = 11 }, new TradeItemInformation { itemID = 8, count = 50 } },
+                costs: new List<TradeItemInformation> { new TradeItemInformation { itemID = 7, count = 1 }, new TradeItemInformation { itemID = 8, count = 50 } },
                 rewards: new List<TradeItemInformation> { new TradeItemInformation { itemID = 12, count = 1 } })
+            );
+            茶店.AddTradeInformation(new TradeInformation(
+                costs: new List<TradeItemInformation> { new TradeItemInformation { itemID = 7, count = 5 } },
+                rewards: new List<TradeItemInformation> { new TradeItemInformation { itemID = 13, count = 1 } })
             );
             factory.AddStore(茶店);
 
@@ -822,35 +844,35 @@ namespace TextAdventureGame.ConsoleEditor
             Store 藥水店 = new Store(5, "藥水店");
             藥水店.AddTradeInformation(new TradeInformation(
                 costs: new List<TradeItemInformation> { new TradeItemInformation { itemID = 7, count = 3 } },
-                rewards: new List<TradeItemInformation> { new TradeItemInformation { count = 14, itemID = 1 } })
+                rewards: new List<TradeItemInformation> { new TradeItemInformation { itemID = 14, count = 1 } })
             );
             藥水店.AddTradeInformation(new TradeInformation(
                 costs: new List<TradeItemInformation> { new TradeItemInformation { itemID = 7, count = 6 }, new TradeItemInformation { itemID = 8, count = 50 } },
-                rewards: new List<TradeItemInformation> { new TradeItemInformation { count = 15, itemID = 1 } })
+                rewards: new List<TradeItemInformation> { new TradeItemInformation { itemID = 15, count = 1 } })
             );
             藥水店.AddTradeInformation(new TradeInformation(
                 costs: new List<TradeItemInformation> { new TradeItemInformation { itemID = 7, count = 12 } },
-                rewards: new List<TradeItemInformation> { new TradeItemInformation { count = 16, itemID = 1 } })
+                rewards: new List<TradeItemInformation> { new TradeItemInformation { itemID = 16, count = 1 } })
             );
             藥水店.AddTradeInformation(new TradeInformation(
                 costs: new List<TradeItemInformation> { new TradeItemInformation { itemID = 7, count = 24 }, new TradeItemInformation { itemID = 8, count = 50 } },
-                rewards: new List<TradeItemInformation> { new TradeItemInformation { count = 17, itemID = 1 } })
+                rewards: new List<TradeItemInformation> { new TradeItemInformation { itemID = 17, count = 1 } })
             );
             藥水店.AddTradeInformation(new TradeInformation(
                 costs: new List<TradeItemInformation> { new TradeItemInformation { itemID = 7, count = 5 } },
-                rewards: new List<TradeItemInformation> { new TradeItemInformation { count = 18, itemID = 1 } })
+                rewards: new List<TradeItemInformation> { new TradeItemInformation { itemID = 18, count = 1 } })
             );
             藥水店.AddTradeInformation(new TradeInformation(
                 costs: new List<TradeItemInformation> { new TradeItemInformation { itemID = 7, count = 10 }, new TradeItemInformation { itemID = 8, count = 50 } },
-                rewards: new List<TradeItemInformation> { new TradeItemInformation { count = 19, itemID = 1 } })
+                rewards: new List<TradeItemInformation> { new TradeItemInformation { itemID = 19, count = 1 } })
             );
             藥水店.AddTradeInformation(new TradeInformation(
                 costs: new List<TradeItemInformation> { new TradeItemInformation { itemID = 7, count = 20 } },
-                rewards: new List<TradeItemInformation> { new TradeItemInformation { count = 20, itemID = 1 } })
+                rewards: new List<TradeItemInformation> { new TradeItemInformation { itemID = 20, count = 1 } })
             );
             藥水店.AddTradeInformation(new TradeInformation(
                 costs: new List<TradeItemInformation> { new TradeItemInformation { itemID = 7, count = 40 }, new TradeItemInformation { itemID = 8, count = 50 } },
-                rewards: new List<TradeItemInformation> { new TradeItemInformation { count = 21, itemID = 1 } })
+                rewards: new List<TradeItemInformation> { new TradeItemInformation { itemID = 21, count = 1 } })
             );
             factory.AddStore(藥水店);
 
@@ -869,6 +891,7 @@ namespace TextAdventureGame.ConsoleEditor
             歐里.AddAccessibleSceneID(3);
             歐里.AddAccessibleSceneID(4);
             歐里.AddAccessibleSceneID(8);
+            歐里.AddAccessibleSceneID(10);
             歐里.AddAccessibleSceneID(11);
             歐里.AddNPC_ID(10);
             歐里.AddNPC_ID(11);
@@ -910,7 +933,7 @@ namespace TextAdventureGame.ConsoleEditor
             world.AddScene(馬車上);
             Scene 茶館 = new Scene(10, "茶館");
             茶館.AddAccessibleSceneID(2);
-            茶館.AddNPC_ID(12);
+            茶館.AddNPC_ID(2);
             茶館.AddNPC_ID(15);
             world.AddScene(茶館);
             Scene 教會 = new Scene(11, "教會");

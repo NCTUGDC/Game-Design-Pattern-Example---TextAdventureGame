@@ -8,6 +8,7 @@ namespace TextAdventureGame.Library.General.StoryElements
         public int EventID { get; private set; }
         public abstract string EventInformation { get; }
 
+        public PlotTriggerEvent() { }
         protected PlotTriggerEvent(int endEventID)
         {
             EventID = endEventID;

@@ -8,6 +8,18 @@ namespace TextAdventureGame.Library.General.Effectors.SkillEffectors
         [MessagePackMember(id: 0, Name = "SP")]
         public int SP { get; private set; }
 
+        public override string Information
+        {
+            get
+            {
+                if (SP > 0)
+                    return string.Format("施放者回復SP{0}點", SP);
+                else
+                    return string.Format("施放者失去SP{0}點", -SP);
+            }
+        }
+
+        public CasterSP_SkillEffector() { }
         public CasterSP_SkillEffector(int sp)
         {
             SP = sp;

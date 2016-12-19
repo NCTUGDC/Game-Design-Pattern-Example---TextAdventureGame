@@ -7,6 +7,18 @@ namespace TextAdventureGame.Library.General.Effectors.EquipmentEffectors
         [MessagePackMember(id: 0, Name = "EvasionPoint")]
         public int EvasionPoint { get; private set; }
 
+        public override string Information
+        {
+            get
+            {
+                if (EvasionPoint > 0)
+                    return string.Format("迴避+{0}", EvasionPoint);
+                else
+                    return string.Format("迴避-{0}", -EvasionPoint);
+            }
+        }
+
+        public EvasionPointEffector() { }
         public EvasionPointEffector(int evasionPoint)
         {
             EvasionPoint = evasionPoint;

@@ -82,7 +82,15 @@ namespace TextAdventureGame.Library.General
             else
             {
                 currentChapterIndex++;
-                return true;
+                if (CurrentChapter.IsSufficientPlotTriggerConditions())
+                {
+                    return true;
+                }
+                else
+                {
+                    currentChapterIndex--;
+                    return false;
+                }
             }
         }
         public bool JumpToChapter(int chapterID)

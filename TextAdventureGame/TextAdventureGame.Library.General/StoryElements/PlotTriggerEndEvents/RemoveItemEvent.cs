@@ -16,6 +16,7 @@ namespace TextAdventureGame.Library.General.StoryElements.PlotTriggerEndEvents
             }
         }
 
+        public RemoveItemEvent() { }
         public RemoveItemEvent(int endEventID, int itemID, int itemCount) : base(endEventID)
         {
             ItemID = itemID;

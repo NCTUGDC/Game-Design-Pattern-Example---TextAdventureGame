@@ -28,7 +28,7 @@ namespace TextAdventureGame.Library.General
             File.WriteAllBytes(fileName, SerializationHelper.Serialize(factory));
         }
 
-        [MessagePackRuntimeDictionaryKeyType]
+        [MessagePackRuntimeCollectionItemType]
         [MessagePackMember(id: 0, Name = "npcDictionary")]
         private Dictionary<int, NPC> npcDictionary;
         public IEnumerable<NPC> NPCs { get { return npcDictionary.Values; } }

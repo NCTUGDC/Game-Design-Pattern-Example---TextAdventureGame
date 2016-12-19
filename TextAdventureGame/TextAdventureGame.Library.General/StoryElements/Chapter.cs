@@ -67,7 +67,17 @@ namespace TextAdventureGame.Library.General.StoryElements
             else
             {
                 currentSectionIndex++;
-                return true;
+                if (CurrentSection.IsSufficientPlotTriggerConditions())
+                {
+                    if (IsEnd)
+                        ExecuteEvents();
+                    return true;
+                }
+                else
+                {
+                    currentSectionIndex--;
+                    return false;
+                }
             }
         }
         public bool JumpToSection(int sectionID)
